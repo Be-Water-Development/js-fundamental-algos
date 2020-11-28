@@ -1,4 +1,8 @@
-// Write a function that takes two arguments, inventoryItem and transactions, and returns an array containing only the transactions for the specified inventoryItem.
+// This exercise already had the answer filled in
+
+// Write a function that takes two arguments, inventoryItem and transactions, 
+// and returns an array containing only the transactions for the specified 
+// inventoryItem.
 
 const transactions = [
   { id: 101, movement: "in", quantity: 5 },
