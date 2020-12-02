@@ -44,7 +44,7 @@ function types (array) {
 return obj
 }
 
-//Uncomment for test!
+//Uncomment for test
 console.log(types(arr))
 
 
