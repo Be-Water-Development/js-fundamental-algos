@@ -45,7 +45,7 @@ function scoreCounter(arr) {
 } */
 
 
-//Uncomment for tests
+//Uncomment for tests!
 console.log(scoreCounter(scores)) // expected output is 3
 console.log(scoreCounter(test)) // expected output is "this function requires an array as input"
 console.log(scoreCounter(moreScores)) // expected output is 4

@@ -41,6 +41,6 @@ const adverbCollections = (array) => {
 };
 
 
-//Uncomment for tests
+//Uncomment for tests!
 //console.log(adverbCollections(arr));
 //console.log(adverbCollections(obj)); uncomment for test case

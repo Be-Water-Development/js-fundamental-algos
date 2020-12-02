@@ -18,6 +18,6 @@ const v = (str) => {
 }; 
 
 
-// uncomment for test
+// uncomment for test!
 //console.log(v(letters)); // ['A', 'E', 'I', 'O', 'U', 'Y']
 

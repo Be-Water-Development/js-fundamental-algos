@@ -66,7 +66,7 @@ function mutate(list) {
 })
 return list
 } 
-//uncomment for test 
+//uncomment for test!
 //console.log(mutate(groceryList)) // logs []
 
 
