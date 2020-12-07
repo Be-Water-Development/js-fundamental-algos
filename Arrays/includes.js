@@ -43,7 +43,7 @@ function contains(city, array) {
 
 
 
-//Uncomments for tests
+//Uncomments for tests!
 //console.log(contains("Barcelona", destinations)); // true
 //console.log(contains("Nashville", destinations)); // false
 //console.log(contains(false, destinations)); // "parameters must be a string and an array"

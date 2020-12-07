@@ -39,7 +39,7 @@ const mode = (array) => {
 };
 
 
-//Uncomment for tests
+//Uncomment for tests!
 //console.log(mode(arr)); // returns { 7: 4 }
 //console.log(mode(arr1)); // returns { '1': 2, '2': 2 }
 //console.log(mode(obj)); // returns null
