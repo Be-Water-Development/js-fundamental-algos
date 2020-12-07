@@ -35,8 +35,6 @@ return results;
 }
 
 
-
-
 console.log(transactionsFor(101, transactions));
 
 // returns

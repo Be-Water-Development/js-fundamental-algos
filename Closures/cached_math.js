@@ -1,11 +1,11 @@
-// Create a function that takes a parameter and a function and returns the time it took
-// for the callback function to fire. If the callback and parameter are exactly the same
-// returned the cached time value; don't run the function again.
+
+
 // Create a function called `timeIt` that takes a callback. `timeIt` should return a function
 // that caches how long it took for the callback to run IF its the first time it has been called.
 // If the same callback AND the same millisecond value is passed to `cachedTimeIt` then the callback should
 // NOT be executed again, but instead return the cached timed value.
 // Code here
+
 
 //declare function timeIt, takes a callback
 const timeIt = (callback) => {
@@ -50,12 +50,16 @@ const timeIt = (callback) => {
   }
 
 
+
 // The callback
 const countDown = (number) => {
   while (number > 0) {
     number--;
   }
 };
+
+
+
 
 const cachedTimeIt = timeIt(countDown);
 const output1 = cachedTimeIt(100); // should return timed value
@@ -91,4 +95,6 @@ console.log(output3);
 //what resources have you attempted to utilize?
 //https://www.techiedelight.com/measure-execution-time-method-javascript/
 //https://stackoverflow.com/questions/313893/how-to-measure-time-taken-by-a-function-to-execute
+
+=======
 
