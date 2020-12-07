@@ -22,7 +22,26 @@
 
 // ADD CODE HERE
 
+//declare a function reduce, takes an array, callback and initial value 
+function reduce (array, callback, initialValue) {
+    //check to see if array is an array 
+    if (Array.isArray(array) == true) {
+        //set the accumulator value equal to the intital value 
+        let acc = initialValue;
+        //using for each, flip through each item of the array
+        array.forEach((ele) => {
+            //assign the accumulator the result of running the callback with the acc as initialvalue, ele as second value
+            acc = callback(acc, ele);
+        });
+        //return the accumulator 
+        return acc; 
+    }
+}
+
+
+
+
 // Uncomment these to check your work!
-// const nums = [4, 1, 3];
-// const add = function(a, b) { return a + b; }
-// console.log(reduce(nums, add, 0)); // should log 8
+ //const nums = [4, 1, 3];
+ //const add = function(a, b) { return a + b; }
+ //console.log(reduce(nums, add, 0)); // should log 8
