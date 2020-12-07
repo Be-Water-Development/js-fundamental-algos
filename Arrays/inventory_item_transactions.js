@@ -13,9 +13,7 @@ const transactions = [
   { id: 103, movement: "out", quantity: 15 },
 ];
 
-const transactionsFor = (inventoryItem, transactions) => {
-  return transactions.filter((item) => item.id === inventoryItem);
-};
+const transactionsFor = (inventoryItem, transactions) => {};
 
 console.log(transactionsFor(101, transactions));
 
