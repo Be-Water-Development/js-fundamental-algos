@@ -3,8 +3,15 @@
 // new object that has the same key/value pairs, but that you don't need to worry
 // about cloning the values as well. The code below demonstrates the expected behaviour.
 
+
+// declare a function clone, object as parameter 
 function clone(obj) {
-  // TODO
+  //set an empty object equal to store the clone in 
+  let cloned = {};
+  //using object.assign, clone the obj onto the target, which is cloned. 
+  Object.assign(cloned, obj);
+  //return cloned 
+  return cloned;
 }
 
 let person = {
@@ -16,5 +23,8 @@ let person = {
 let clonedPerson = clone(person);
 person.age = 34;
 
-console.log(person.age); // 34
-console.log(clonedPerson.age); // 33
+
+// uncomment for tests 
+//console.log(person.age); // 34
+//console.log(clonedPerson.age); // 33
+//console.log(clonedPerson) // { title: 'Duke', name: 'Nukem', age: 33 }
