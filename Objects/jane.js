@@ -9,7 +9,11 @@ let jane = {
     city: "Aarhus",
   },
   occupation: "engineer",
-  // add code here
+  //greet is an interior function that takes a name parameter, returns the string `Hey, ${name}`
+  greet(name) {console.log(`Hey, ${name}!`)}
 };
 
+
+
 jane.greet("Bobby"); // Hey, Bobby!
+
