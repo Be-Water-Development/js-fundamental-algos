@@ -1,5 +1,12 @@
 // Write code that calculates how expensive all the vehicles combined are.
 
+const totalCost = (...args) => { 
+  return (Array(...args)).reduce((acc, el) => {
+    acc += parseInt(el.price) * 1000
+    return acc
+  }, 0)
+}
+
 let vehicleOne = {
   manufacturer: "Tesla",
   model: "Model X",
@@ -17,3 +24,14 @@ let vehicleTwo = {
   seats: 7,
   price: "30k",
 };
+
+let vehicleThree = {
+  manufacturer: "Subaru",
+  model: "Impreza",
+  year: 2013,
+  range: 295,
+  seats: 7,
+  price: "6k",
+};
+
+console.log(totalCost(vehicleOne, vehicleTwo, vehicleThree));

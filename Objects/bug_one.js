@@ -10,20 +10,24 @@ function createGreeter(name) {
       let msg = "";
       switch (timeOfDay) {
         case "morning":
-          msg += `${morning} ${name}`;
+          // bug - to access an anonymous object's values
+          // we needed to use this.<key>. Since <key> is not
+          // a variable, it was undefined in the output. 
+          msg += `${this.morning} ${name}`;
           break;
         case "afternoon":
-          msg += `${afternoon} ${name}`;
+          msg += `${this.afternoon} ${name}`;
           break;
         case "evening":
-          msg += `${evening} ${name}`;
+          msg += `${this.evening} ${name}`;
           break;
       }
-
-      console.log(msg);
+      // bug - was logging msg to the console instead of returning msg
+      // this created an undefined output after the message
+      return msg;
     },
   };
 }
 
 let helloVictor = createGreeter("Victor");
-helloVictor.greet("morning"); // should output ===> Good Morning Victor
+console.log(helloVictor.greet("morning")); // should output ===> Good Morning Victor
