@@ -2,11 +2,20 @@
 // places marked "ADD CODE HERE" in order to achieve the desired console logs.
 
 function filterArray(array, callback) {
-  //Fill this in
+  return array.filter((el) => {
+    return callback(el)
+  })
 }
+
 const arrOfNums = [1, 2, 3, 4, 5];
-function func1(num) {}
-function func2(num) {}
+
+function func1(num) {
+  return num % 2 === 0
+}
+
+function func2(num) {
+  return num % 2 != 0
+}
 
 // Uncomment these to check your work!
 console.log(filterArray(arrOfNums, func1)); // should log: [2, 4]
