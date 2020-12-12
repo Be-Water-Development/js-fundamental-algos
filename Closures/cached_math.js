@@ -1,3 +1,4 @@
+// <<<<<<< HEAD
 // Create a function called `timeIt` that takes a callback. 
 // `timeIt` should return a function
 // that caches how long it took for the callback to run IF 
