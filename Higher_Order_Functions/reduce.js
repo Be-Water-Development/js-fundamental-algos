@@ -20,9 +20,18 @@
 // The accumulator's value is now 4. Then add(4, 1) makes it 5.
 // Finally add(5, 3) brings it to 8, which is returned.
 
+// Creating the function without array operations
+
 // ADD CODE HERE
 
+const reduce = (arr, cb, acc) => {
+    for (let i = 0; i < arr.length; i++) {
+        acc = cb(arr[i], acc)
+    }
+    return acc
+}
+
 // Uncomment these to check your work!
-// const nums = [4, 1, 3];
-// const add = function(a, b) { return a + b; }
-// console.log(reduce(nums, add, 0)); // should log 8
+const nums = [4, 1, 3];
+const add = function(a, b) { return a + b; }
+console.log(reduce(nums, add, 0)); // should log 8
