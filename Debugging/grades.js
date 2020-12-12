@@ -3,6 +3,8 @@
 // Figure out why,
 // and write the code necessary for the program to work as expected.
 
+// Test add line of code; examining merge conflicts
+
 function average(nums) {
   const sum = nums.reduce((total, num) => total + num);
 
