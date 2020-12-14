@@ -1,83 +1,134 @@
 // Creates a clone of an object.
 // const users = [{ 'user': 'barney' },{ 'user': 'fred' }];
 // const shallowClone = clone(users);
-// shallowClone[0] === users[0] → true
-function clone(value) {
-  // CODE HERE
-}
+// console.log("-----Clone Test Cases-----")
+// console.log(shallowClone[0] === users[0]) // true
+// console.log("Shallow clone: ", shallowClone)
+
+// function clone(value) {
+//   return value.map((obj) => {
+//     return obj
+//   })
+// }
+
 
 // Return the size of collection. If the argument passed is an array, then return
 // the length of the array. If the argument passed is an object, then return the
 // number of key/value properties.
-// size([1,2,3]); → 3
-// size({a: 1, b: 2}); → 2
-function size(collection) {
-  // CODE HERE
-}
+// console.log("-----Size of Collection Test Cases-----")
+// console.log(size([1,2,3])); // 3
+// console.log(size({a: 1, b: 2})); // 2
+// console.log(size(4)) //
+
+// function size(collection) {
+//   if (Array.isArray(collection)) {
+//     return collection.length
+//   } else if (typeof(collection) === 'object') {
+//     return Object.keys(collection).length;
+//   } else {
+//     return "Collection was not array or object."
+//   }
+// }
 
 // Returns the first element of an array without modifying the original array.
 // Returns undefined if array is empty
-// first([1,2,3]); → 1
-// first([]); → undefined
-function first(array) {
-  // CODE HERE
-}
+// console.log("-----First Test Cases-----")
+// console.log(first([1,2,3])); // 1
+// console.log(first([])); // undefined
+
+// function first(array) {
+//   if (array.length === 0) {
+//     return undefined
+//   } else {
+//     return array[0]
+//   }
+// }
 
 // Creates a slice of array with n elements dropped from the beginning.
 // n defaults to 1
-// drop([1, 2, 3]); → [2, 3]
-// drop([1, 2, 3], 2); → [3]
-// drop([1, 2, 3], 5); → []
-// drop([1, 2, 3], 0); → [1, 2, 3]
-function drop(array, n) {
-  // CODE HERE
-}
+// console.log("-----Drop Test Cases-----")
+// console.log(drop([1, 2, 3])); // [2, 3]
+// console.log(drop([1, 2, 3], 2)); // [3]
+// console.log(drop([1, 2, 3], 5)); // []
+// console.log(drop([1, 2, 3], 0)); // [1, 2, 3]
+
+// function drop(array, n = 1) {
+//   return array.slice(n)
+// }
 
 //Creates a slice of array with n elements taken from the beginning.
 //n defaults to 1
-// take([1, 2, 3]); → [1]
-// take([1, 2, 3], 2); → [1, 2]
-// take([1, 2, 3], 5); → [1, 2, 3]
-// take([1, 2, 3], 0); → []
-function take(array, n) {
-  // CODE HERE
-}
+// console.log("-----Take Test Cases-----")
+// console.log(take([1, 2, 3])); // [1]
+// console.log(take([1, 2, 3], 2)); // [1, 2]
+// console.log(take([1, 2, 3], 5)); // [1, 2, 3]
+// console.log(take([1, 2, 3], 0)); // []
+
+// function take(array, n = 1) {
+//   return array.slice(0, n)
+// }
 
 // Gets the value of key from all elements in collection.
-// pluck([{user: 'Bob', age: 20},{user: 'Sam', age: 25}], 'user'); → ['Bob','Sam']
-function pluck(array, key) {
-  // CODE HERE
-}
+// console.log("-----Pluck Test Cases-----")
+// console.log(pluck([{user: 'Bob', age: 20},{user: 'Sam', age: 25}], 'user')); 
+// // ['Bob','Sam']
+
+// function pluck(array, key) {
+//   return array.map((obj) => {
+//     return obj[key]
+//   })
+// }
 
 // Assigns own enumerable properties of source object(s) to the destination
 // object. Subsequent sources overwrite property assignments of previous sources.
-// extend({ 'user': 'barney' }, { 'age': 40 }, { 'user': 'fred' });
+// console.log("-----Extend Test Cases-----")
+// console.log(extend({ 'user': 'barney' }, { 'age': 40 }, { 'user': 'fred' }));
 // should return ->  { 'user': 'fred', 'age': 40 }
 // BONUS: solve with reduce
-function extend(destination) {
-  // CODE HERE
-}
+
+// function extend(...objs) {
+//   return objs.reduce((acc, obj) => {
+//     for (const property in obj) {
+//       acc[property] = obj[property]
+//     }
+//     return acc
+//   }, {})
+// }
 
 // Using a for loop, call the functions in the queue in order with the input
 // number, where the results of each function become the next function’s input.
 // Additionally, the queue should be empty after the function is called.
-/* const puzzlers = [
+const puzzlers = [
   function(a) { return 8 * a - 10; },
   function(a) { return (a - 3) * (a - 3) * (a - 3); },
   function(a) { return a * a + 4;},
   function(a) { return a % 5;}
 ];
 const start = 2;
-applyAndEmpty(2, puzzlers); → 3
-*/
+console.log("-----Apply and Empty Test Cases-----")
+console.log(applyAndEmpty(2, puzzlers)); // 3
+
 function applyAndEmpty(input, queue) {
-  // CODE HERE
+  queue.reverse() // modifies the input array
+  for (let i = queue.length - 1; i >= 0; i--) {
+    input = queue[i](input)
+    queue.pop()
+  }
+  console.log("Queue is empty: ", queue)
+  return input
 }
 
 // Returns a function that when called, will check if it has already computed
 // the result for the given argument and return that value instead if possible.
 function memoize(func) {
-  // CODE HERE
+  let cache = {}
+  const returnFunc = () => {
+    if (Object.keys(cache).includes(func.toString())) {
+      return cache[func.toString()]
+
+      // work in progress, resume here!
+    }
+  }
 }
 
 // Invokes func after wait milliseconds. Any additional arguments are provided
