@@ -3,9 +3,19 @@
 // * adding a new task
 // * completing a given number of existing tasks
 // * displaying the task list
-// We decided to keep things simple and model the tasks as strings. Completing a task for us simply means deleting the string from the array of tasks.
+// We decided to keep things simple and model the tasks as strings. 
+// Completing a task for us simply means deleting the string from the array of tasks.
 
-// Experimenting with our code reveals that it doesn't work exactly as we expected. Find the problem and fix it.
+// Experimenting with our code reveals that it doesn't work exactly as we expected. 
+// Find the problem and fix it.
+
+// Answer
+
+// In the while loop in completeTasks, we were deleting an element from the array.
+// However, this deleted the value at the index without shortening the array 
+// itself. Changing this line to use array.shift removed the element from the 
+// beginning and shortened the array - this resulted in the right console logs
+// and output. 
 
 const todos = [
   "wash car",
@@ -30,8 +40,11 @@ function completeTasks(n = 1) {
   let tasksComplete = 0;
 
   while (todos.length > 0 && tasksComplete < n) {
+    // Debug
+    // console.log("todo list", todos)
     console.log(`${todos[0]} complete!`);
-    delete todos[0];
+    // delete todos[0];
+    todos.shift()
     tasksComplete++;
   }
 

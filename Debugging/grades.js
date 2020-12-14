@@ -1,9 +1,8 @@
 // Professor Graham wrote some simple code to help him determine the
-// average and median scores on each of his quarterly exams, but some of the test cases are failing.
+// average and median scores on each of his quarterly exams, 
+// but some of the test cases are failing.
 // Figure out why,
 // and write the code necessary for the program to work as expected.
-
-// Test add line of code; examining merge conflicts
 
 function average(nums) {
   const sum = nums.reduce((total, num) => total + num);
@@ -12,12 +11,31 @@ function average(nums) {
 }
 
 function median(nums) {
-  nums.sort();
+
+  // changed sort method
+  // if return of function is less than 0, a goes before b in sort order
+  nums.sort((a, b) => a - b)
+
+  // Old sort method and bug explanation
+  // nums.sort();
+  // debugging
+  // the bug is in how sort() works; it is by the first digit based 
+  // on UTF-16 character code order if no function is supplied.
+  // So for arrays that have a score of 100, 
+  // 100 is first in the array, then the lowest score follows after that. 
+  // This is not the ascending order required to calculate the median, and 
+  // returns incorrect median values. 
+
+  // console.log("sorted array", nums)
 
   let median;
   const length = nums.length;
   if (length % 2 === 0) {
     median = average([nums[length / 2 - 1], nums[length / 2]]);
+    // debugging
+    // console.log("even nums median", median)
+    // console.log(nums[length / 2 - 1])
+    // console.log(nums[length / 2])
   } else {
     median = nums[Math.floor(length / 2)];
   }

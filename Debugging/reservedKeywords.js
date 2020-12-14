@@ -3,6 +3,14 @@
 // test cases, but we aren't seeing the expected result.
 // Why not? Fix the code so that it behaves as intended.
 
+// Answer
+
+// We weren't seeing the expected result because Array.forEach cannot return a value
+// before completing the iteration through the entire array. This meant that 
+// the return statement was not being executed. By switching the code to use a 
+// traditional for loop, we enable it to return true and exit the loop once it 
+// runs into a reserved keyword. 
+
 const RESERVED_KEYWORDS = [
   "break",
   "case",
@@ -49,11 +57,16 @@ const RESERVED_KEYWORDS = [
 ];
 
 function isReserved(name) {
-  RESERVED_KEYWORDS.forEach((reserved) => {
-    if (name === reserved) {
+  // Old function - used forEach
+  // RESERVED_KEYWORDS.forEach((reserved) => {
+  // Fixed method - uses traditional for loop. 
+  for (let i = 0; i < RESERVED_KEYWORDS.length; i++) {
+    // console.log(RESERVED_KEYWORDS[i])
+    if (name === RESERVED_KEYWORDS[i]) {
+      // console.log(RESERVED_KEYWORDS[i])
       return true;
     }
-  });
+  }
 
   return false;
 }
