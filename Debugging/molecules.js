@@ -1,16 +1,33 @@
-// We decided to dip our toes into computational chemistry. Our first task is to write a function
+// We decided to dip our toes into computational chemistry. 
+// Our first task is to write a function
 // that computes the total number of valence electrons in a molecule.
-// Fortunately, this is relatively straightforward. For each element in the molecule, we need to know two things:
+// Fortunately, this is relatively straightforward. 
+// For each element in the molecule, we need to know two things:
 
-// The element's atomic number. We can get this from the periodic table and decided to simply hard-code
+// The element's atomic number. We can get this from the periodic table 
+// and decided to simply hard-code
 // it in a valence function for now.
-// The number of atoms of that element in the molecule. We can read this directly from the string
+// The number of atoms of that element in the molecule. 
+// We can read this directly from the string
 // representation of the molecule.
-// For example, Geosmin has the string representation C12H22O, so it has 12 C atoms, 22 H atoms,
+// For example, Geosmin has the string representation C12H22O, 
+// so it has 12 C atoms, 22 H atoms,
 // and 1 O atom, summing up to 12*4 + 22*1 + 1*6 = 76 valence electrons.
 
-// We decided to write our function valenceOfMolecule such that it expects string representations of each element in the molecule as input, e.g. valenceOfMolecule('C12', 'H22', 'O'). It then returns the total number of all valence electrons in that molecule. Well, almost.
+// We decided to write our function valenceOfMolecule such that 
+// it expects string representations of each element in the molecule 
+// as input, e.g. valenceOfMolecule('C12', 'H22', 'O'). 
+// It then returns the total number of all valence electrons in that 
+// molecule. Well, almost.
 // Can you explain why it throws an exception and how to fix it?
+
+// The reason the exception was thrown is that the arguments object is an 
+// object, not a standard JS array. To obtain a standard JS array from an 
+// indefinite number of arguments, the rest parameter can be used. 
+// The two changes made to the function valenceOfMolecule are including 
+// the rest parameter as the function's only parameter, then calling 
+// forEach on the resulting array. This avoids the exception and returns
+// the expected output.
 
 function valence(element) {
   switch (element) {
@@ -25,11 +42,13 @@ function valence(element) {
     // omitting the rest
   }
 }
-
-function valenceOfMolecule() {
+function valenceOfMolecule(...args) {
+// Old function definition
+// function valenceOfMolecule() {
   let sum = 0;
-
-  arguments.forEach((atom) => {
+  args.forEach((atom) => {
+  // Old forEach function
+  // arguments.forEach((atom) => {
     const match = /([a-zA-Z]+)([0-9]*)/.exec(atom);
     const element = match[1];
     const number = parseInt(match[2]) || 1;
