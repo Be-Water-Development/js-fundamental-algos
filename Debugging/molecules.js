@@ -12,6 +12,9 @@
 // We decided to write our function valenceOfMolecule such that it expects string representations of each element in the molecule as input, e.g. valenceOfMolecule('C12', 'H22', 'O'). It then returns the total number of all valence electrons in that molecule. Well, almost.
 // Can you explain why it throws an exception and how to fix it?
 
+
+//"Arguments" within valenceOfMolecule is an object, using Object.entries, the object is converted into an array which forEach can now iterate over. 
+
 function valence(element) {
   switch (element) {
     case "H":
@@ -29,7 +32,7 @@ function valence(element) {
 function valenceOfMolecule() {
   let sum = 0;
 
-  arguments.forEach((atom) => {
+  Object.entries(arguments).forEach((atom) => {
     const match = /([a-zA-Z]+)([0-9]*)/.exec(atom);
     const element = match[1];
     const number = parseInt(match[2]) || 1;

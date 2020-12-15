@@ -19,7 +19,8 @@ const memberDirectory = {
 };
 
 function isValidName(name) {
-  return /^\w+ \w+$/.test(name);
+  //changed from \w to \D
+  return /^\D+ \D+$/.test(name);
 }
 
 function isValidPhone(phone) {
@@ -40,6 +41,14 @@ function addMember(name, phone) {
 
 addMember("Laura Carlisle", "444-2223");
 addMember("Rachel Garcia", "232-1191");
-addMember("Earl 5mith", "331-9191");
+addMember("Earl 5mith", "331-9191"); // Invalid member information.
+addMember("Earl Smith", "3t1-9191"); // Invalid member information.
+addMember("Earl Smith", "Unicorns"); // Invalid member information.
+addMember("331-9191", "Earl Smith"); // Invalid member information.
 
 console.log(memberDirectory);
+
+
+
+//The \w metacharacter is used to find a word character, a-z, A-Z, 0-9. So numeric values pass this regex expression. Changed \w to \D which matches any character that 
+//is not a digit, thus eliminating the invalid entry of "5mith". 

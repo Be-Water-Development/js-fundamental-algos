@@ -49,13 +49,15 @@ const RESERVED_KEYWORDS = [
 ];
 
 function isReserved(name) {
+let result = false; //declared a variable result equal to false, forEach always returns undefined, need variable outside forEach scope to store result in. 
+
   RESERVED_KEYWORDS.forEach((reserved) => {
     if (name === reserved) {
-      return true;
-    }
+      result = true; // set result equal to true 
+    } 
   });
 
-  return false;
+  return result; // return result 
 }
 
 console.log(isReserved("monkey")); // false
