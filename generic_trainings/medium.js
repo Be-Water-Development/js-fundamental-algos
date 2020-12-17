@@ -43,25 +43,66 @@ function trim(string) {
 // shift() removes a value from the beginning and returns it
 // the goal of this problem is to reverse engineer what array methods 
 // are actually doing and return an object that has those methods
+
 function createArray() {
-  let arrayObj = []
-  arrayObj.push = (val) => {
-    arrayObj[arrayObj.length] = val
+  let obj = {};
+  // push
+  obj.push = (...args) => {
+    const keys = Object.keys(obj);
+    const noFuncArr = keys.filter((el) => {
+      return !["push","pop","shift", "unshift"].includes(el)
+    })
+    if (noFuncArr.length === 0) {
+      console.log("Pushing:", ...args)
+      args.forEach((el, index) => {
+        obj[index] = `This is ${el}`
+      })
+    } else {
+      const numArr = noFuncArr.filter((el) => {
+        return // need a regex here for numbers only
+      }).map((el) => {
+        // convert the numbers to number data type
+      })
+      const getRandomInt = (min, max) => {
+        min = Math.ceil(min + 1);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min);
+      }
+      // generate random keys that aren't in obj already
+      // must be greater than highest int value to be added 
+      // to end of object
+      for (let i = 0; i < args.length; i++) {
+        randomKey = getRandomInt(Math.max(...noFuncArr))
+      }     
+    }
+   
   }
-  arrayObj.pop = () => {
-    poppedVal = arrayObj[arrayObj.length -1]
-    // arrayObj = arrayObj[0, arrayObj.length -1] Needs work
+
+  // pop
+  obj.pop = () => {
+    const keys = Object.keys(obj);
+    const noFuncArr = keys.filter((el) => {
+      return !["push","pop","shift", "unshift"].includes(el)
+    })
+    const poppedVal = noFuncArr[noFuncArr.length - 1]
+    delete obj[poppedVal];
+    console.log("Popping off:", poppedVal)
     return poppedVal
   }
-  // Add the rest of the methods
-  return arrayObj
+
+  // unshift
+
+  return obj;
 }
 
-console.log("-----CreateArray Test Cases-----")
-const myArr = createArray()
-myArr.push(1)
-myArr.push(2)
-console.log("Push", myArr)
-myArr.pop()
-console.log(myArr)
+const myArrObj = createArray()
 
+console.log("-----Push Test Cases-----")
+myArrObj.push(0, 1, 2, 54, 4, 32) // push into empty array
+console.log(myArrObj)
+myArrObj.push(9, 8) // push into array that already has values
+console.log(myArrObj)
+
+console.log("-----Pop Test Cases-----")
+console.log(myArrObj.pop())
+console.log(myArrObj)
