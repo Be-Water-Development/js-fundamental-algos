@@ -182,65 +182,21 @@ const funcMemo = memoize (function (num) {
 
 
 
-
-
-
-//I apologize in advance for the struggle below... 
-
-
-
-
 // Invokes func after wait milliseconds. Any additional arguments are provided
 // to func when it is invoked.
 function delay(func, wait) {
 
-  return function () {
-     setTimeout(func, wait);
+  return function (string) {
+     setTimeout(func, wait, string);
   }
 }
 
-const print = delay(function () {
-  console.log("is this right?");
+const print = delay(function (string) {
+  console.log(string.toUpperCase());
 }, 2000);
   
 
-//console.log(print()); // undefined, waits two seconds, "is this right?"
-
-// I had some trouble here, I know there is some closure holes in my brain. I couldn't get print to accept any arguments without getting the error
-//"TypeError [ERR_INVALID_CALLBACK]: Callback must be a function. Received undefined" 
-//I know we will review cached_math at some point, if we could touch base on this one too that would be wonderful. I feel like my biggest knowledge gap
-//is closurers. Here is what I struggled with: 
+//console.log(print("This makes sense now")); 
+//console.log("This is first");
 
 
-function delayNaN(func, wait) {
-
-  return function () {
-     setTimeout(func, wait);
-  }
-}
-
-const printNaN = delayNaN(function (num) {
-  console.log(num * 2);
-}, 2000);
-  
-
-//console.log(printNaN(2)); // undefined, waits two seconds, NaN
-
-//so then I tried to pass the interior function a parameter num and invoke func with num, got the error:
-// "TypeError [ERR_INVALID_CALLBACK]: Callback must be a function. Received undefined" 
-
-function delayErr(func, wait) {
-
-  return function (num) {
-     setTimeout(func(num), wait);
-  }
-}
-
-const printError = delayErr(function (num) {
-  console.log(num * 2);
-}, 2000);
-
-//console.log(printError(2)) // "TypeError [ERR_INVALID_CALLBACK]: Callback must be a function. Received undefined" 
-//I did research the error, and I think I understand that func being passed a parameter is converting it into it's own function, not a callback. 
-//So I am a little lost on the connection between func, and it's access to the parameter num. I realize "Any additional arguments are provided
-// to func when it is invoked" is not connecting in my brain.  
