@@ -48,40 +48,32 @@ function createArray() {
   let obj = {};
   // push
   obj.push = (...args) => {
-    const keys = Object.keys(obj);
-    const noFuncArr = keys.filter((el) => {
+    console.log("Pushing:", ...args)
+    const noFuncArr = Object.keys(obj).filter((el) => {
       return !["push","pop","shift", "unshift"].includes(el)
     })
     if (noFuncArr.length === 0) {
-      console.log("Pushing:", ...args)
-      args.forEach((el, index) => {
-        obj[index] = `This is ${el}`
+      args.forEach((el, i) => {
+        obj[i] = `This is ${el}`
       })
     } else {
       const numArr = noFuncArr.filter((el) => {
-        return // need a regex here for numbers only
+        return new RegExp(/^[0-9.]+$/).test(el)
       }).map((el) => {
-        // convert the numbers to number data type
+        return Number(el)
       })
-      const getRandomInt = (min, max) => {
-        min = Math.ceil(min + 1);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min) + min);
-      }
-      // generate random keys that aren't in obj already
-      // must be greater than highest int value to be added 
-      // to end of object
-      for (let i = 0; i < args.length; i++) {
-        randomKey = getRandomInt(Math.max(...noFuncArr))
-      }     
+      let i = Math.floor(Math.max(...numArr)) + 1
+      args.forEach((el) => {
+        obj[i] = `This is ${el}`
+        i++
+      })
     }
    
   }
 
   // pop
   obj.pop = () => {
-    const keys = Object.keys(obj);
-    const noFuncArr = keys.filter((el) => {
+    const noFuncArr = Object.keys(obj).filter((el) => {
       return !["push","pop","shift", "unshift"].includes(el)
     })
     const poppedVal = noFuncArr[noFuncArr.length - 1]
@@ -98,7 +90,9 @@ function createArray() {
 const myArrObj = createArray()
 
 console.log("-----Push Test Cases-----")
-myArrObj.push(0, 1, 2, 54, 4, 32) // push into empty array
+myArrObj.push(0, 1, 2, 3, 4, 5, 10, 15, 100, "foo", "bar", "buzz") // push into empty array
+myArrObj["13s5"] = "this is a string w a number" // test regex with letter
+myArrObj["12.56"] = "this is a decimal number"
 console.log(myArrObj)
 myArrObj.push(9, 8) // push into array that already has values
 console.log(myArrObj)
