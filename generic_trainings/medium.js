@@ -46,7 +46,9 @@ function trim(string) {
 
 function createArray() {
   let obj = {};
+
   // push
+
   obj.push = (...args) => {
     console.log("Pushing:", ...args)
     const noFuncArr = Object.keys(obj).filter((el) => {
@@ -58,7 +60,7 @@ function createArray() {
       })
     } else {
       const numArr = noFuncArr.filter((el) => {
-        return new RegExp(/^[0-9.]+$/).test(el)
+        return new RegExp(/^(0|[1-9]\d*)$/).test(el) // positive decimals
       }).map((el) => {
         return Number(el)
       })
@@ -72,31 +74,120 @@ function createArray() {
   }
 
   // pop
+
   obj.pop = () => {
     const noFuncArr = Object.keys(obj).filter((el) => {
       return !["push","pop","shift", "unshift"].includes(el)
     })
     const poppedVal = noFuncArr[noFuncArr.length - 1]
     delete obj[poppedVal];
-    console.log("Popping off:", poppedVal)
+    console.log("Popping off key:", poppedVal)
     return poppedVal
   }
 
   // unshift
+
+  obj.unshift = (...args) => {
+    console.log("Unshifting:", ...args)
+    const noFuncArr = Object.keys(obj).filter((el) => {
+      return !["push","pop","shift", "unshift"].includes(el)
+    })
+    if (noFuncArr.length === 0) {
+      args.forEach((el, i) => {
+        obj[i] = `This is ${el}`
+      })
+    } else {
+      const numArr = noFuncArr.filter((el) => {
+        return new RegExp(/^(0|[1-9]\d*)$/).test(el) // positive integers
+      }).map((el) => {
+        return Number(el)
+      })
+      let minKey = Math.min(...numArr)
+      let cachedIndex = 0
+      args.reverse()
+      while (minKey > 0 && cachedIndex < args.length) {
+        obj[minKey -1] = `This is ${args[cachedIndex]}`
+        cachedIndex++;
+        minKey--
+      }
+      const newNumArr = Object.keys(obj).filter((el) => {
+        return !["push","pop","shift", "unshift"].includes(el)
+      }).filter((el) => {
+        return new RegExp(/^(0|[1-9]\d*)$/).test(el) // positive integers
+      }).map((el) => {
+        return Number(el)
+      });
+      newNumArr.reverse()
+      newNumArr.forEach((el) => {
+        obj[el + (args.length - cachedIndex)] = obj[el]
+      })
+      let newIndex = args.length - cachedIndex -1;
+      for (let i = cachedIndex; i < args.length; i++) {
+        obj[newIndex] = `This is ${args[i]}`
+        newIndex--
+      }
+    }
+  }
+
+  // shift
+
+  obj.shift = () => {
+    const noFuncArr = Object.keys(obj).filter((el) => {
+      return !["push","pop","shift", "unshift"].includes(el)
+    })
+    const shiftedVal = noFuncArr[0]
+    delete obj[shiftedVal]
+    console.log(`Deleting value from beginning of object at key: ${shiftedVal}`)
+    noFuncArr.filter((el, i) => {
+      return !(i === 0)
+    }).forEach((el) => {
+      obj[el -1] = obj[el]
+      delete obj[el]
+    })
+    return shiftedVal;
+  }
 
   return obj;
 }
 
 const myArrObj = createArray()
 
+console.log("")
+console.log("----------CreateArray() Test cases----------")
+
 console.log("-----Push Test Cases-----")
 myArrObj.push(0, 1, 2, 3, 4, 5, 10, 15, 100, "foo", "bar", "buzz") // push into empty array
-myArrObj["13s5"] = "this is a string w a number" // test regex with letter
-myArrObj["12.56"] = "this is a decimal number"
-console.log(myArrObj)
+console.log("Adding some more obscure keys...")
+myArrObj["12.56"] = "this is a decimal number" // test regex with decimal
+myArrObj["34..s56"] = "this is not a decimal number" // test regex with non-numeric digit
+console.log("Array after first push and adds:", myArrObj)
 myArrObj.push(9, 8) // push into array that already has values
-console.log(myArrObj)
+console.log("Array after second push:", myArrObj)
 
 console.log("-----Pop Test Cases-----")
-console.log(myArrObj.pop())
+myArrObj.pop()
+myArrObj.pop()
+myArrObj.pop()
+console.log("Array after pop():", myArrObj)
+
+console.log("-----Unshift Test Cases-----")
+myArrObj.unshift("unshift 1", "unshift 2")
+myArrObj.unshift("unshift again", "...and again")
+console.log(myArrObj)
+console.log("-----Unshift Edge Cases, Min key > 0-----")
+delete myArrObj['0']
+delete myArrObj['1']
+delete myArrObj['2']
+delete myArrObj['3']
+console.log("Array after deleting keys 0-3:", myArrObj)
+myArrObj.unshift("should be 0", "should be one")
+console.log(myArrObj)
+
+console.log("-----Shift Test Cases-----")
+myArrObj.shift()
+myArrObj.shift()
+console.log(myArrObj)
+
+console.log("-----Unshift Three more values-----")
+myArrObj.unshift("newOne", "newTwo", "newThree")
 console.log(myArrObj)
