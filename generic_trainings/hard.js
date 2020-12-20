@@ -1,90 +1,224 @@
-// Iterates over elements of an array invoking callback for each element. The callback should be passed the element, the current index, and the entire array.
-// const callback = function(element, index, array) {
-//  console.log(element +"," +index +"," +array);
-// }
-// forEach(['a','b','c'], callback); → prints a,0,['a','b','c'] b,1,['a','b','c'] c,2,['a','b','c']
-// For each element in the array, the callback we passed is called. The callback can be customized, but in the above example, the callback prints out the element, index, and entire array.
-function forEach(array, callback) {}
+// Iterates over elements of an array invoking callback for each element. 
+// The callback should be passed the element, the current index, and the entire array.
+console.log("-----forEach-----")
+const callback = function(element, index, array) {
+console.log(element +"," +index +"," +array);
+}
+forEach(['a','b','c'], callback); // prints a,0,['a','b','c'] b,1,['a','b','c'] c,2,['a','b','c']
+// For each element in the array, the callback we passed is called. The callback can be customized, 
+// but in the above example, the callback prints out the element, index, and entire array.
+function forEach(array, callback) {
+  for (let i = 0; i < array.length; i++) {
+    callback(array[i], i, array)
+  }
+}
+
+
 
 // Creates an array of values by running each element in collection through callback
 // Should we explain that map returns?
 // Callback (element/value, index/key, array)
-// map([1,2,3], function(element, index, array) {
-//  return element * 3;
-// }); -> [3,6,9]
+console.log("-----Map-----")
+console.log(map([1,2,3], function(element, index, array) {
+ return element * 3;
+})); // [3,6,9]
 // BONUS: use the forEach method you use to create map
-function map(array, callback) {}
+function map(array, callback) {
+  let outArr = [];
+  forEach(array, (el) => {
+    outArr.push(callback(el))
+  })
+  return outArr
+    
+}
 
 // Iterates over elements of collection, returning an Array of all elements callback returns truthy for.
-// filter([1,2,3,4], function(element, index, collection) {
-//  return element % 2 === 0;
-// }); → [2,4]
-// filter({a: 1, b: 2,c: 3,d: 4}, function(element, index, collection) {
-//  return element % 2 !== 0;
-// }); → [1,3]
-function filter(collection, callback) {}
+console.log("-----Filter-----")
+console.log(filter([1,2,3,4], function(element, index, collection) {
+ return element % 2 === 0;
+})); // [2,4]
+console.log(filter({a: 1, b: 2,c: 3,d: 4}, function(element, index, collection) {
+ return element % 2 !== 0;
+})); // [1,3]
+function filter(collection, callback) {
+  let outArr = []
+  if (Array.isArray(collection)) {
+    forEach(collection, (el) => {
+      if (callback(el)) {
+        outArr.push(el)
+      }
+    })
+  } else if (typeof(collection) === 'object') {
+    forEach(Object.keys(collection), (el) => {
+      if (callback(collection[el])) {
+        outArr.push(collection[el])
+      }
+    })
+  }
+  return outArr
+}
 
-// Removes all elements from array that callback returns truthy for and returning a collection of elements that did not pass the truthy test.
+// Removes all elements from array that callback returns truthy for and returning a collection 
+// of elements that did not pass the truthy test.
 // The returned collection should be the same type that was passed in, either an Array or Object.
-// reject([1,2,3,4], function(element, index, collection) {
-//  return element % 2 === 0;
-// }); → [1,3]
-// reject({a:1, b:2, c:3, d:4}, function(value, key, collection) {
-//  return element % 2 !== 0;
-// }); → {b:2, d:4}
+console.log("-----Reject-----")
+console.log(reject([1,2,3,4], function(element, index, collection) {
+ return element % 2 === 0;
+})); // [1,3]
+console.log(reject({a:1, b:2, c:3, d:4}, function(value, key, collection) {
+ return value % 2 !== 0;
+})); // {b:2, d:4}
 // Challenge: use filter
-function reject(collection, callback) {}
+function reject(collection, callback) {
+  if (Array.isArray(collection)) {
+    return collection.filter((el) => {
+      return !callback(el)
+    })
+  } else if (typeof(collection) === 'object') {
+      return Object.keys(collection).filter((el) => {
+        return !callback(collection[el])
+      }).reduce((acc, val) => {
+        acc[val] = collection[val]
+        return acc
+      }, {})
+  }
+}
 
 // Creates an array without duplicate values from the inputted array.
 // The order of the array is preserved.
-// uniq([1,2,1]); → [1,2]
+console.log("-----Unique-----")
+console.log(uniq([1,2,1])); // [1,2]
 function uniq(array) {
-  //CODE HERE
+  return array.reduce((acc, val) => {
+    if (!acc.includes(val)) {
+      acc.push(val)
+    }
+    return acc
+  },[])
 }
 
 // Gets the index at which the first occurrence of value is found in array
 // Returns -1 if element is not in array
 // DO NOT USE THE BUILT-IN INDEXOF function
-// indexOf([11,22,33], 11); → 0
-// indexOf([11,22,33], 5); → -1
+console.log("-----indexOf-----")
+console.log(indexOf([11,22,33,11], 11)); // 0
+console.log(indexOf([11,22,33], 5)); // -1
 function indexOf(array, value) {
-  //CODE HERE
+  let counter = 0
+  return array.reduce((acc, val, ind) => {
+    if (val === value & counter === 0) {
+      acc = ind
+      counter ++
+    }
+    return acc
+  }, -1)
 }
 
 // Returns a function that is restricted to invoking func once.
 // Repeat calls to the function return the value of the first call.
 function once(func) {
-  //CODE HERE
+  let cachedVal
+  let called = false
+  const inner = (...args) => {
+    if(!called) {
+      called = true
+      cachedVal = func(...args)
+      return cachedVal
+    } else {
+      return `The function can only be called once. 
+      Returning result from first call: ${cachedVal}`
+    }
+  }
+  return inner
 }
 
-// Reduces collection to a value which is the accumulated result of running each element in collection through iteratee, where each successive invocation is supplied the return value of the previous. If accumulator is not provided the first element of collection is used as the initial value.
+const plusTwo = once(el => el +2)
+console.log("-----Once-----")
+console.log(plusTwo(4)) // 6
+console.log(plusTwo(8)) // 'This function can only be called once. Returning result from first call: 6'
+console.log(plusTwo(24)) // 'This function can only be called once. Returning result from first call: 6'
+
+// Reduces collection to a value which is the accumulated result of running each element in 
+// collection through iteratee, where each successive invocation is supplied the return value 
+// of the previous. If accumulator is not provided the first element of collection is used as 
+// the initial value.
 // If a start parameter is not provided, then set the start value as the zeroth index
-// reduce([1,2], function(stored,current) {
-//  return stored + current;
-// }); → 3
-// reduce([1,2], function(stored,current) {
-//  return stored + current;
-// },1); → 4
-function reduce(array, callback, start) {}
+console.log("-----Reduce-----")
+console.log(reduce([1,2], function(stored,current) {
+ return stored + current;
+})); // 3
+console.log(reduce([1,2], function(stored,current) {
+ return stored + current;
+},1)); // 4
+function reduce(array, callback, start) {
+  let storedVal;
+  if (start) {
+    storedVal = start
+    for (let i = 0; i < array.length; i++) {
+      storedVal = callback(storedVal, array[i])
+    }
+  } else {
+    storedVal = array[0]
+    for (let i = 1; i < array.length; i++) {
+    storedVal = callback(storedVal, array[i])
+    }
+  }
+  return storedVal
+}
 
 // Takes an array and a function as arguments.
 // Returns true if the function produces true when each array element is passed to it.
 // Otherwise it returns false.
-// every([2, 4, 6], function(elem) {
-//   return elem % 2 == 0;
-// });  -> true
-// every([2, 4, 7], function(elem) {
-//   return elem % 2 == 0;
-// });  -> false
+console.log("-----Every-----")
+console.log(every([2, 4, 6], function(elem) {
+  return elem % 2 == 0;
+}));  // true
+console.log(every([2, 4, 7], function(elem) {
+  return elem % 2 == 0;
+}));  // false
 // BONUS: use reduce in your answer
 function every(array, func) {
-  //CODE HERE
+  return array.reduce((acc, val) => {
+    if (func(val)) {
+      acc = true
+    } else acc = false
+    return acc
+  }, false)
 }
 
 // Flattens a nested array.
-// flatten([1, [2, 3, [4]]]); → [1, 2, 3, [4]]
-function flatten(array) {}
+console.log("-----Flatten-----")
+console.log(flatten([1, [2, 3, [4]]])); // [1, 2, 3, [4]]
+function flatten(array) {
+  return array.reduce((acc, val) => {
+    if (Array.isArray(val)) {
+      val.forEach((el) => {
+        acc.push(el)
+      })
+    } else acc.push(val)
+    return acc
+  }, [])
+}
 
 // Recursively flattens a nested array.
-// flattenDeep([1, [2, 3, [4]]]); → [1, 2, 3, 4]
-function flattenDeep(array) {}
+console.log("-----flattenDeep-----")
+flattenDeep([1, [2, 3, [4]]]); // [1, 2, 3, 4]
+function flattenDeep(array) {
+
+  // while there are arrays in the input array
+  // essentially we need to figure out how to continue using reduce()
+  // until there are no more arrays in the input array
+
+  return array.reduce((acc, val) => {
+      if (Array.isArray(val)) {
+        val.forEach((el) => {
+          acc.push(el) // we need to check recursively if el is an array. Once el is not an 
+          // array, we can push the values to acc.
+        })
+      } else acc.push(val)
+      return acc
+    }, [])
+
+}
+      
+

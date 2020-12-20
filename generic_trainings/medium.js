@@ -46,24 +46,38 @@ function trim(string) {
 
 function createArray() {
   let obj = {};
-
-  // push
-
-  obj.push = (...args) => {
-    console.log("Pushing:", ...args)
-    const noFuncArr = Object.keys(obj).filter((el) => {
+  
+  // helper function to remove functions from keys array
+  const removeFunc = (inObj) => {
+    return Object.keys(inObj).filter((el) => {
       return !["push","pop","shift", "unshift"].includes(el)
     })
+  }
+
+  //helper function to keep only positive integers in keys array
+  const numsOnly = (arr) => {
+    return arr.filter((el) => {
+      return new RegExp(/^(0|[1-9]\d*)$/).test(el) // positive integers
+    }).map((el) => {
+      return Number(el)
+    })
+  }
+
+
+  // push
+  obj.push = (...args) => {
+    console.log("Pushing:", ...args)
+    const noFuncArr = removeFunc(obj)
+    
+    // scenarios when the object is empty
     if (noFuncArr.length === 0) {
       args.forEach((el, i) => {
         obj[i] = `This is ${el}`
       })
+
+      // scenarios when there are already keys in the object
     } else {
-      const numArr = noFuncArr.filter((el) => {
-        return new RegExp(/^(0|[1-9]\d*)$/).test(el) // positive decimals
-      }).map((el) => {
-        return Number(el)
-      })
+      const numArr = numsOnly(noFuncArr)
       let i = Math.floor(Math.max(...numArr)) + 1
       args.forEach((el) => {
         obj[i] = `This is ${el}`
@@ -74,11 +88,8 @@ function createArray() {
   }
 
   // pop
-
   obj.pop = () => {
-    const noFuncArr = Object.keys(obj).filter((el) => {
-      return !["push","pop","shift", "unshift"].includes(el)
-    })
+    const noFuncArr = removeFunc(obj)
     const poppedVal = noFuncArr[noFuncArr.length - 1]
     delete obj[poppedVal];
     console.log("Popping off key:", poppedVal)
@@ -86,22 +97,21 @@ function createArray() {
   }
 
   // unshift
-
   obj.unshift = (...args) => {
     console.log("Unshifting:", ...args)
-    const noFuncArr = Object.keys(obj).filter((el) => {
-      return !["push","pop","shift", "unshift"].includes(el)
-    })
+    const noFuncArr = removeFunc(obj)
+
+    // scenario when the object is empty
     if (noFuncArr.length === 0) {
       args.forEach((el, i) => {
         obj[i] = `This is ${el}`
       })
+
+      // scenarios when there are already keys in the object
     } else {
-      const numArr = noFuncArr.filter((el) => {
-        return new RegExp(/^(0|[1-9]\d*)$/).test(el) // positive integers
-      }).map((el) => {
-        return Number(el)
-      })
+
+      // scenario where the minimum key is not 0
+      const numArr = numsOnly(noFuncArr)
       let minKey = Math.min(...numArr)
       let cachedIndex = 0
       args.reverse()
@@ -110,13 +120,10 @@ function createArray() {
         cachedIndex++;
         minKey--
       }
-      const newNumArr = Object.keys(obj).filter((el) => {
-        return !["push","pop","shift", "unshift"].includes(el)
-      }).filter((el) => {
-        return new RegExp(/^(0|[1-9]\d*)$/).test(el) // positive integers
-      }).map((el) => {
-        return Number(el)
-      });
+
+      // scenario where the minimum key is 0, incorporating any keys added 
+      // when minimum key was not 0
+      const newNumArr = numsOnly(removeFunc(obj))
       newNumArr.reverse()
       newNumArr.forEach((el) => {
         obj[el + (args.length - cachedIndex)] = obj[el]
@@ -130,11 +137,8 @@ function createArray() {
   }
 
   // shift
-
   obj.shift = () => {
-    const noFuncArr = Object.keys(obj).filter((el) => {
-      return !["push","pop","shift", "unshift"].includes(el)
-    })
+    const noFuncArr = removeFunc(obj)
     const shiftedVal = noFuncArr[0]
     delete obj[shiftedVal]
     console.log(`Deleting value from beginning of object at key: ${shiftedVal}`)
@@ -188,6 +192,7 @@ myArrObj.shift()
 myArrObj.shift()
 console.log(myArrObj)
 
-console.log("-----Unshift Three more values-----")
+console.log(`-----Unshift three more values-----
+-----Test case here is filling empty indices, then adding key/val pair when obj. key 0 exists.-----`)
 myArrObj.unshift("newOne", "newTwo", "newThree")
 console.log(myArrObj)
