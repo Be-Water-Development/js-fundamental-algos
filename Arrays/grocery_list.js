@@ -17,20 +17,12 @@ let groceryList = [
 
 // Your code.
 
-// Iterate through the array
-// we need to reverse the array and iterate backwards, using arr.pop()
-
 const checkOffItems = (arr) => {
-  // reverse the array
   arr.reverse()
-  // write a backwards for loop to iterate backwards through the array
   for (let i = arr.length - 1; i >= 0; i--) {
-    // log the elements as they're removed
     console.log(arr[i])
-    // pop off the last element in the array
     arr.pop()
   }
-  // return the empty array
   return arr
 }
 

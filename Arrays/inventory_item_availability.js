@@ -27,29 +27,14 @@ const transactionsFor = (inventoryItem, transactions) => {
 };
 
 const isItemAvailable = (inventoryItem, transactions) => {
-  // check if the item exists using transactionsFor function above
-  // movement in + the quantity
-  // return true if quantity is greater than 0
-  // initialize output and sum
-  let output = false
-  let sum = 0
-  // filter the item to id keys that match the input string, then 
-  // iterate through the resulting array of objects
-  transactions.filter((item) => item.id === inventoryItem).forEach(
-    (el) => {
-      if (el.movement === 'in') {
-        sum += el.quantity
-      } else {
-        sum -= el.quantity
-      }
-    })
-  // check the sum after the above operations, set to true if sum is greater
-  // than 0  
-  if (sum > 0) {
-    output = true
-  }
-  
-  return output
+  return transactionsFor(inventoryItem, transactions).reduce((acc, el) => {
+    if (el.movement === 'in') {
+      acc += el.quantity
+    } else {
+      acc -= el.quantity
+    }
+    return acc
+  }, 0) > 0
 };
 
 console.log(isItemAvailable(101, transactions)); // false

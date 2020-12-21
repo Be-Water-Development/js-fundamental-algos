@@ -173,17 +173,26 @@ console.log("-----Every-----")
 console.log(every([2, 4, 6], function(elem) {
   return elem % 2 == 0;
 }));  // true
-console.log(every([2, 4, 7], function(elem) {
+console.log(every([2, 4, 7, 6], function(elem) {
   return elem % 2 == 0;
 }));  // false
 // BONUS: use reduce in your answer
+// Not using the .every() array method
 function every(array, func) {
-  return array.reduce((acc, val) => {
+  let outVal;
+  let boolArr = array.reduce((acc, val) => {
     if (func(val)) {
-      acc = true
-    } else acc = false
+      acc.push(true)
+    } else acc.push(false)
     return acc
-  }, false)
+  },[])
+  for (let i = 0; i < boolArr.length; i++) {
+    if (!boolArr[i]) {
+      outVal = false
+      return outVal
+    } else outVal = true
+  } 
+  return outVal
 }
 
 // Flattens a nested array.
@@ -202,23 +211,27 @@ function flatten(array) {
 
 // Recursively flattens a nested array.
 console.log("-----flattenDeep-----")
-flattenDeep([1, [2, 3, [4]]]); // [1, 2, 3, 4]
+console.log(flattenDeep([1, [[2, 3, [4]]]])); // [1, 2, 3, 4]
 function flattenDeep(array) {
-
-  // while there are arrays in the input array
-  // essentially we need to figure out how to continue using reduce()
-  // until there are no more arrays in the input array
-
   return array.reduce((acc, val) => {
       if (Array.isArray(val)) {
-        val.forEach((el) => {
-          acc.push(el) // we need to check recursively if el is an array. Once el is not an 
-          // array, we can push the values to acc.
+        let initVal = val
+        while (initVal.some(elem => Array.isArray(elem))) {
+          initVal = initVal.reduce((acc, val) => {
+            if (Array.isArray(val)) {
+              val.forEach((el) => {
+                acc.push(el)
+              })
+            } else acc.push(val)
+            return acc
+          }, [])
+        }
+        initVal.forEach((el) => {
+          acc.push(el)
         })
       } else acc.push(val)
       return acc
     }, [])
-
 }
       
 
