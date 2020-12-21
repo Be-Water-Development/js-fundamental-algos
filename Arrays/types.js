@@ -20,14 +20,10 @@ const arr = [
   () => console.log("this is a simple function"),
 ];
 
-// const { x } = {};
-// const x = () => {
-//   return "lol";
-// };
+
 
 const types = (arr) => {
-  // use reduce to create the output obj
-  return arr.reduce((acc, val, ind, arr) => {
+  return arr.reduce((acc, val, ind) => {
     acc[ind] = {}
     acc[ind][val] = typeof(val)
     return acc

@@ -17,16 +17,8 @@ const arr = [
 
 
 const adverbCollections = (array) => {
-  // iterate over the array with reduce
-  // return an object where each key is the adverb, and the value is the 
-  // number of chars
   return array.reduce(cb = (acc, val) => {
-    // acc starts as an empty object
-    // use indexing to check if the last two letters of the word = "ly"
-    // conditional statement
-    if (val.slice(-2) == 'ly') {
-      // if the last two letters are "ly", set the word as the key
-      // and the value as the length of the key
+    if (val.slice(-2) === 'ly') {
       acc[val] = val.length
     }
     return acc
