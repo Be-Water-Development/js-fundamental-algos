@@ -6,16 +6,9 @@
 
 // ADD CODE HERE
 
-// delay accepts two arguments
 const delay = (cb, wt) => {
-    // use setTimeout on the callback in the inner function
-    // doesn't take any arguments, uses args in the closure
     const innerFunc = () => {
-        // setTimeout
-        // setTimeout doesn't return anything here, the console.log()
-        // logs the incremented count variable after 1 second
         return setTimeout(cb, wt) 
-        
     }
     return innerFunc
 }

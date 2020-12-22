@@ -19,7 +19,10 @@ function toDate(string) {
 }
 
 function toString(date) {
-  return `${date.getYear()}-${date.getMonth()}-${date.getDay()}`;
+  // fix: (toString was formatting date in way that wasn't matching keys in myCalendar)
+  return `${date.getFullYear()}-${("0" + (date.getMonth() + 1)).slice(-2)}-${("0" + date.getDate()).slice(-2)}`;
+  // old toString(date)
+  // return `${date.getYear()}-${date.getMonth()}-${date.getDay()}`;
 }
 
 function isInThePast(date) {
@@ -43,7 +46,7 @@ const myCalendar = {
 };
 
 const offeredClasses = {
-  "Back To The Future Movie Night": ["2018-07-30", "2018-08-06"],
+  "Back To The Future Movie Night": ["2018-07-30"],
   "Web Security Fundamentals": ["2018-09-10", "2018-09-11"],
   "Pranayama Yoga For Beginners": ["2018-08-30", "2018-08-31", "2018-09-01"],
   "Mike's Hikes": ["2018-08-16"],
@@ -63,8 +66,7 @@ function getCompatibleEvents(classes, calendar) {
   Object.keys(classes).forEach((className) => {
     const classDates = classes[className].map(toDate);
 
-    if (classDates.every(isInThePast)) {
-    //if (classDates.some(isInThePast)) {
+    if (classDates.some(isInThePast)) {
       return;
     }
 
@@ -78,19 +80,3 @@ function getCompatibleEvents(classes, calendar) {
 
 console.log(getCompatibleEvents(offeredClasses, myCalendar));
 // expected: ["Mike's Hikes", "Powerboating 101"]
-
-// Answer:
-
-// The code doesn't show Back to the Future movie night because it is
-// after the date value for TODAY. This seems expected at first since the script
-// only shows upcoming classes, and the only date for BttF movie night is in
-// the past. The function isInThePast() checks whether the 
-// date is before or after TODAY. However, when isInThePast() is evaluated in
-// the conditional statement on line 67, the array operation .some is used. 
-// This will return true if any of the dates are in the past, even if there are 
-// some dates that work with the calendar in the future. You can see the bug if you
-// leave one date in the BttF calendar array that is in the past, and add another
-// that is compatibler with myCalendar and is in the future. 
-
-// The fix is to use .every() instead of .some() on line 67. This will return true
-// only if every element in the array meets the condition. 

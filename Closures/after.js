@@ -5,17 +5,12 @@
 // ADD CODE HERE
 
 const after = (num, cb) => {
-  // declare variables needed in the closure
   let counter = 0;
-  // declare inner function with available params
   const innerFunc = (...params) => {
-    // increment the counter
     counter ++
-    // once the counter is three or greater execute the cb
     if (counter >= num) {
       return cb(...params)
     }
-
   }
   return innerFunc
 }

@@ -32,10 +32,6 @@ function median(nums) {
   const length = nums.length;
   if (length % 2 === 0) {
     median = average([nums[length / 2 - 1], nums[length / 2]]);
-    // debugging
-    // console.log("even nums median", median)
-    // console.log(nums[length / 2 - 1])
-    // console.log(nums[length / 2])
   } else {
     median = nums[Math.floor(length / 2)];
   }
