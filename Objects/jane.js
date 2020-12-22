@@ -10,9 +10,10 @@ let jane = {
   },
   occupation: "engineer",
   //greet is an interior function that takes a name parameter, returns the string `Hey, ${name}`
-  greet(name) {
-    console.log(`Hey, ${name}!`);
-  },
+  greet(name) {console.log(`Hey, ${name}!`)}
 };
 
+
+
 jane.greet("Bobby"); // Hey, Bobby!
+

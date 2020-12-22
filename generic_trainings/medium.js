@@ -2,7 +2,7 @@
 // and returns an array of only the odd numbers
 // ex: returnOdds([1,2,3,4,5,6,7]); -> [1,3,5,7]
 function returnOdds(array) {
-  return array.filter((item) => item % 2 !== 0);
+  return array.filter(item => item % 2 !== 0);
 }
 //console.log(returnOdds([1,2,3,4,5,6,7])); // [ 1, 3, 5, 7 ]
 
@@ -10,7 +10,7 @@ function returnOdds(array) {
 // and returns an array of only the even numbers
 // ex: returnEvent([1,2,3,4,5,6,7]); -> [2,4,6]
 function returnEvens(array) {
-  return array.filter((item) => item % 2 === 0);
+  return array.filter(item => item % 2 === 0);
 }
 //console.log(returnEvens([1,2,3,4,5,6,7])); // [ 2, 4, 6 ]
 
@@ -40,19 +40,19 @@ function createArray(arr, value) {
   return {
     push: (arr) => arr.concat(value),
     pop: (arr) => {
-      const endVal = arr[array.length - 1];
-      arr.splice(arr.length - 1, 1);
+      const endVal = arr[array.length -1];
+      arr.splice(arr.length -1, 1);
       return endVal;
     },
     unshift: (arr) => arr.splice(0, 0, value),
     shift: (arr) => {
       const firstVal = arr[0];
       arr.splice(0, 1);
-      return firstVal;
-    },
-  };
+      return firstVal
+    }
+  }
 }
 
-//I am a little fuzzy on if this is the return value wanted, LMK if I am off the rails here.
+//I am a little fuzzy on if this is the return value wanted, LMK if I am off the rails here. 
 
 //console.log(createArray());// {push: [Function: push], pop: [Function: pop], unshift: [Function: unshift], shift: [Function: shift]}

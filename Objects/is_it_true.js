@@ -1,4 +1,4 @@
-// We are experimenting with some code to get more comfortable working with objects.
+// We are experimenting with some code to get more comfortable working with objects. 
 //Run the snippet below and explain why "It's true!" is never output.
 
 let obj = {
@@ -16,7 +16,7 @@ for (let prop in obj) {
   }
 }
 
-//Explanation:
+//Explanation: 
 
 /*"It's true!" never outputs to the console since none of the keys, [ 'num', 'property name', 'true', 'fun' ], are strictly equal to the boolean true. 
 Since the key "true" passed in is a string, not a boolean, the strict comparison operator "===" recognizes the difference in data types. 

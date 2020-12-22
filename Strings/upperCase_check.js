@@ -1,19 +1,17 @@
-//Write a function that takes a string argument, and returns true if all of the
+//Write a function that takes a string argument, and returns true if all of the 
 //alphabetic characters inside the string are uppercase; false otherwise. Ignore characters that are not alphabetic.
 
-//Note: I like the forEach solution more, but I realized I may be overengineering all my strings....
 
-//solution with conditionals
-function isUppercase(string) {
-  if (string === string.toUpperCase() || string === "") {
-    return true;
-  }
-  if (string !== string.toUpperCase()) {
-    return false;
-  }
-}
+//Note: I like the forEach solution more, but I realized I may be overengineering all my strings.... 
 
-//solution with forEach
+
+//solution with conditionals 
+function isUppercase (string) {
+    if (string === string.toUpperCase() || string === "") {return true}
+    if (string !== string.toUpperCase()) {return false}
+} 
+
+//solution with forEach 
 /*function isUppercase (string) {
     let result;
     if (string === undefined || string === "") {result = true}
@@ -26,7 +24,7 @@ function isUppercase(string) {
         }
     })
     return result
-} */
+} */ 
 
 //uncomment for tests
 //console.log(isUppercase("t")); // false
@@ -35,3 +33,5 @@ function isUppercase(string) {
 //console.log(isUppercase("FOUR SCORE")); // true
 //console.log(isUppercase("4SCORE!")); // true
 //console.log(isUppercase("")); // true
+
+

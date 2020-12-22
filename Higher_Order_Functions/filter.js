@@ -1,13 +1,16 @@
 // Add code to the functions func1 and func2 in the
 // places marked "ADD CODE HERE" in order to achieve the desired console logs.
 
-//declare a function filterArray, takes an array and a callback
+
+//declare a function filterArray, takes an array and a callback 
 function filterArray(array, callback) {
-  //return the filtered result of calling the callback on the array.
-  return array.filter((item) => callback(item));
-  //this can also be written as:
-  //return array.filter(callback);
+  //return the filtered result of calling the callback on the array. 
+  return array.filter(item => callback(item));
+  //this can also be written as: 
+  //return array.filter(callback); 
+  
 }
+
 
 const arrOfNums = [1, 2, 3, 4, 5];
 
