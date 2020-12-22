@@ -10,17 +10,14 @@
 // Code here
 
 const timeIt = (cb) => {
-  // store the cached time value in the closure
   let cachedNum;
   let cachedCb;
   let cachedOutput;
-  // return a function
   const innerFunc = (num) => {
     if (!cachedNum) {
       cachedNum = num;
       cachedCb = cb;
-      // time how long it takes to run the callback, return that number
-      // time before function executes
+      // get time before function executes
       const d = new Date ();
       const b = d.getTime()
       // run the function
@@ -29,13 +26,12 @@ const timeIt = (cb) => {
       const de = new Date ()
       const e = de.getTime()
       console.log(`Beginning and end times: ${b}, ${e}`)
-      // return a sentence with the output
       cachedOutput = e - b
       return `The callback took ${cachedOutput} ms to run with an input of ${num}.`
     } else if (cachedNum === num && cachedCb === cb) {
       return `Cached countdown value: ${cachedOutput} ms.`;
     } else {
-      // time how long it takes to run the callback, return that number
+      // get time before function executes
       const d = new Date ();
       const b = d.getTime()
       // run the function
@@ -44,9 +40,7 @@ const timeIt = (cb) => {
       const de = new Date ()
       const e = de.getTime()
       console.log(`Beginning and end times: ${b}, ${e}`)
-      // return a sentence with the output
-      const sentence = `The callback took ${e - b} ms to run with an input of ${num}.`
-      return sentence
+      return `The callback took ${e - b} ms to run with an input of ${num}.`
     }
   } 
   return innerFunc
@@ -57,7 +51,6 @@ const timeIt = (cb) => {
 const countDown = (number) => {
   console.log ("Running the callback!")
   while (number > 0) {
-    // check if the callback is being invoked
     if (number < 10) {
       console.log(number)
     }
@@ -71,7 +64,6 @@ const countDown = (number) => {
 const countUp = (number) => {
   console.log ("Running the callback!")
   while (number < 2000) {
-    // check if the callback is being invoked
     if (number > 1990) {
       console.log(number)
     }

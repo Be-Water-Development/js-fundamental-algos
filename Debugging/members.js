@@ -61,6 +61,8 @@ addMember("Rachel Garcia", "232-1191");
 addMember("Earl 5mith", "331-9191"); // Invalid member information
 addMember("3arl Smitty", "302-3346") // Invalid member information
 addMember("DickRichards", "457-8906") // Invalid member information
-addMember("Borat Excite Sagdyev", "456-9086") //Invalid member information
+addMember("Borat Excite Sagdyev", "456-9086") // Invalid member information
+addMember("Rudy Giuliani", "987-h3ll") // Invalid member information
+addMember("My Dad", "3045-4596") // Invalid member information
 
 console.log(memberDirectory);
