@@ -16,40 +16,35 @@ const arr = [
   () => console.log("this is a simple function"),
 ];
 
-
-//I am not sure what this is?? 
+//I am not sure what this is??
 /*const { x } = {};
 const x = () => {
   return "lol";
  }; */
 
-
 //side note: I had a lot of trouble here, I don't understand why you can't just do:
-//obj[index]= {ele : typeof ele} // returns   '0': { ele: 'string' } etc... 
+//obj[index]= {ele : typeof ele} // returns   '0': { ele: 'string' } etc...
 //I've never used obj[index] = {[ele] : typeof ele} to set key/value pairs and the syntax confuses me.
-//I originally used obj[index] = `{${ele}: ${typeof ele}}`, I know that is wrong b/c I am returning a string, 
-//it was the closest I could get with understanding what is happending. 
+//I originally used obj[index] = `{${ele}: ${typeof ele}}`, I know that is wrong b/c I am returning a string,
+//it was the closest I could get with understanding what is happending.
 
+// NOLEY; this is a string `{${ele}: ${typeof ele}}`, --> check out my solution
 
-//declare a function, array as input 
-function types (array) {
+//declare a function, array as input
+function types(array) {
   //set a variable equal to an empty object
   const obj = {};
   //using forEach, flip through the array.
   array.forEach((ele, index) => {
-    //using square bracket notation, add the key/value pair to obj, index as key, object as value. 
-    obj[index] = {[ele] : typeof ele} // I don't know why this works, I tried the [ele] in desperation. 
-})
-//return obj
-return obj
+    //using square bracket notation, add the key/value pair to obj, index as key, object as value.
+    obj[index] = { [ele]: typeof ele }; // I don't know why this works, I tried the [ele] in desperation.
+  });
+  //return obj
+  return obj;
 }
 
 //Uncomment for test
-console.log(types(arr))
-
-
-
-
+console.log(types(arr));
 
 // returns
 // {
@@ -62,8 +57,14 @@ console.log(types(arr))
 //   6: { "() => void": "function" },
 // }
 
+// Noley, you were right on track here; maybe a bit of an odd challenge but you got it.
 
+const xavyrTypes = (arr) => {
+  const obj = {};
+  arr.forEach((el, i) => {
+    const stringified = JSON.stringify(el);
+    obj[i] = { stringified: typeof el };
+  });
+};
 
-
-
-
+console.log(xavyrTypes(arr));

@@ -18,9 +18,9 @@ let vehicleTwo = {
   price: "30k",
 };
 
-//delcare a function price, two objects as parameters 
-function price (obj1, obj2) {
-  //using parseInt, convert each price into a number, storing the sum of both into totalPrice 
+//delcare a function price, two objects as parameters
+function price(obj1, obj2) {
+  //using parseInt, convert each price into a number, storing the sum of both into totalPrice
   const totalPrice = parseInt(obj1.price, 10) + parseInt(obj2.price, 10);
   //return totalPrice plus "k"
   return totalPrice + "k";
@@ -29,3 +29,4 @@ function price (obj1, obj2) {
 //uncomment for tests
 //console.log(price(vehicleOne, vehicleTwo)) // 130K
 
+// Yep

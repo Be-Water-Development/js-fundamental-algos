@@ -31,7 +31,7 @@ function completeTasks(n = 1) {
 
   while (todos.length > 0 && tasksComplete < n) {
     console.log(`${todos[0]} complete!`);
-    //delete todos[0] leaves an undefined hole in the array, removing the item and shifting the index's with splice corrects the error. 
+    //delete todos[0] leaves an undefined hole in the array, removing the item and shifting the index's with splice corrects the error.
     todos.splice(0, 1);
     tasksComplete++;
   }
@@ -60,3 +60,5 @@ addTask("homework");
 
 completeTasks(3);
 displayTaskList();
+
+// Sweet

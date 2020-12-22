@@ -4,26 +4,28 @@
 // and write the code necessary for the program to work as expected.
 
 //sort returns incorrect results, need a compare function to have sort compare numeric values, was previously comparing string values, which is why 100 was considered less
-//than 64 since 1<6.  
+//than 64 since 1<6.
 
 function average(nums) {
-
   const sum = nums.reduce((total, num) => total + num);
   return sum / nums.length;
+
+  // also cool...but less readable
+  // return nums.reduce((total, num) => total + num) / nums.length
 }
 
 function median(nums) {
-  //compare function 
-  nums.sort(function(a, b) {return a - b});
-  
+  //compare function
+  nums.sort(function (a, b) {
+    return a - b;
+  });
+
   let median;
   const length = nums.length;
-  
-  
+
   if (length % 2 === 0) {
-    median = average([nums[length / 2 - 1], nums[length / 2]]); 
+    median = average([nums[length / 2 - 1], nums[length / 2]]);
   } else {
-    
     median = nums[Math.floor(length / 2)];
   }
 
@@ -43,7 +45,9 @@ console.log(average(quarter2ExamScores) === 86.3);
 console.log(average(quarter3ExamScores) === 83.7);
 console.log(average(quarter4ExamScores) === 88.8);
 
-console.log(median(quarter1ExamScores) === 89.5); 
-console.log(median(quarter2ExamScores) === 89.5); 
-console.log(median(quarter3ExamScores) === 87); 
+console.log(median(quarter1ExamScores) === 89.5);
+console.log(median(quarter2ExamScores) === 89.5);
+console.log(median(quarter3ExamScores) === 87);
 console.log(median(quarter4ExamScores) === 89.5);
+
+// All good here

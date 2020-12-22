@@ -7,7 +7,6 @@ function addTwo(number) {
 //console.log(addTwo(5)); // 7
 //console.log(addTwo(6)); // 2
 
-
 // adds the two inputted numbers together
 // ex: add(5, 10); -> 15
 function add(num1, num2) {
@@ -67,10 +66,18 @@ function square(value) {
 // ex: isOdd(4); -> false
 // ex: isOdd(5); -> true
 function isOdd(num) {
-  if (num % 2 === 0) {return false}
-  else {return true};
+  if (num % 2 === 0) {
+    return false;
+  } else {
+    return true;
+  }
 }
-//console.log(isOdd(4)); // false 
+// I prefer...it is comparison you almost never should return true/or false
+// return the comparison that evaluates to be true or false
+// also note the es6 syntax and the implicit return
+const isOdd = (num) => num % 2 === 0;
+
+//console.log(isOdd(4)); // false
 //console.log(isOdd(5)); // true
 
 // determines if the number is negative
@@ -79,12 +86,17 @@ function isOdd(num) {
 // ex: isNegative(-1); -> true
 // ex: isNegative(1); -> false
 // ex: isNegative(0); -> false
+
+// same situation as above
 function isNegative(num) {
-  if (num < 0) {return true}
-  else {return false};
+  if (num < 0) {
+    return true;
+  } else {
+    return false;
+  }
 }
 //console.log(isNegative(-1)); // true
-//console.log(isNegative(0));// false 
+//console.log(isNegative(0));// false
 //console.log(isNegative(1)); // false
 
 // returns the absolute value of the inputted number
@@ -100,31 +112,45 @@ function positive(num) {
 // isNumber(5); → true
 // isNumber('hi'); → false
 function isNumber(value) {
-  if (typeof value === "number") {return true} 
-  else {return false};
+  if (typeof value === "number") {
+    return true;
+  } else {
+    return false;
+  }
 }
+
+// same deal
+const isNumber = (value) => typeof value === "number";
+
 //console.log(isNumber(5)); // true
-//console.log(isNumber("squirrels")); // false 
+//console.log(isNumber("squirrels")); // false
 
 // Returns boolean of whether argument is classified as an Array object
 // isArray(5); → false
 // isArray([1,2,3]); → true
+
+// same thing
 function isArray(value) {
-  if (Array.isArray(value)) {return true} 
-  else {return false};
+  if (Array.isArray(value)) {
+    return true;
+  } else {
+    return false;
+  }
 }
 //console.log(isArray(5)); // false
 //console.log(isArray([1, 2, 3])); // true
-
 
 // Returns boolean of whether argument is classified as an Object
 // isObject(5); → false
 // isObject([1,2,3]); → true
 function isObject(value) {
-  if (typeof value === 'object') {return true}
-  else {return false};
+  if (typeof value === "object") {
+    return true;
+  } else {
+    return false;
+  }
 }
-//console.log(isObject(5)); //false 
+//console.log(isObject(5)); //false
 //console.log(isObject({1:3, 3:4})); // true
 //console.log(isObject([1, 3, 4])); // true
 
@@ -132,9 +158,13 @@ function isObject(value) {
 // isNull(null); -> true
 // isNull(5); -> false
 function isNull(value) {
-  if (value === null) {return true} 
-  else {return false};
+  if (value === null) {
+    return true;
+  } else {
+    return false;
+  }
 }
 //console.log(isNull(null)); // true
-//console.log(isNull(5)); //false 
+//console.log(isNull(5)); //false
 
+// Noley, good file to update the verbose code to be es6 and full of implicit returns
