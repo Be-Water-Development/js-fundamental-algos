@@ -6,13 +6,11 @@ let nestedArray = [
   ["age", 33],
 ];
 
-
-//declare a function createObj, takes an array as parameter 
-function createObj (array) {
-  //using object.fromEntries, convert the array into key/value pairs 
-  return Object.fromEntries(array)
+//declare a function createObj, takes an array as parameter
+function createObj(array) {
+  //using object.fromEntries, convert the array into key/value pairs
+  return Object.fromEntries(array);
 }
-
 
 // Expected output:
 console.log(createObj(nestedArray));

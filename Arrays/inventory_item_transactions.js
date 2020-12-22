@@ -14,30 +14,28 @@ const transactions = [
   { id: 103, movement: "out", quantity: 15 },
 ];
 
-// filter is the better solution, solved with forEach since this was already here. 
+// filter is the better solution, solved with forEach since this was already here.
 //const transactionsFor = (inventoryItem, transactions) => {
- // return transactions.filter((item) => item.id === inventoryItem);
+// return transactions.filter((item) => item.id === inventoryItem);
 //};
-
 
 //declare a function transactionsFor, inventoryItem and transactions as parameters
 function transactionsFor(inventoryItem, transactions) {
   //set a result variable equal to an empty array
-  let results = []
-  //using forEach, flip through each element, if the element is equal to the inventory item, push into results. 
+  let results = [];
+  //using forEach, flip through each element, if the element is equal to the inventory item, push into results.
   transactions.forEach((ele) => {
     if (ele.id === inventoryItem) {
-      results.push(ele)
+      results.push(ele);
     }
-});
-//return results 
-return results;
+  });
+  //return results
+  return results;
 }
-
 
 console.log(transactionsFor(101, transactions));
 
 // returns
 // [ { id: 101, movement: "in",  quantity:  5 },
 //   { id: 101, movement: "in",  quantity: 12 },
-//   { id: 101, movement: "out", quantity: 18 }, 
+//   { id: 101, movement: "out", quantity: 18 },

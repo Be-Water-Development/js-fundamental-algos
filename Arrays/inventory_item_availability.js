@@ -20,43 +20,37 @@ const transactions = [
   { id: 103, movement: "out", quantity: 15 },
 ];
 
+//Side note: This should be prettier, having trouble condensing my code.
 
-//Side note: This should be prettier, having trouble condensing my code. 
-
-//helper function from previous exercise 
+//helper function from previous exercise
 const transactionsFor = (inventoryItem, transactions) => {
   return transactions.filter((item) => item.id === inventoryItem);
 };
 
-
-//declare a function isItemAvailable, item and transactions as parameters 
+//declare a function isItemAvailable, item and transactions as parameters
 const isItemAvailable = (item, transactions) => {
-
-  //declare a variable equal to the result of calling transactionsFor 
+  //declare a variable equal to the result of calling transactionsFor
   const currentItems = transactionsFor(item, transactions);
 
-  //declare a variable to hold the total item quantities 
-    let sum = 0;
+  //declare a variable to hold the total item quantities
+  let sum = 0;
 
   //using forEach, turn the quantities with "out" movement into negatives, add all items to sum
-    currentItems.forEach((ele) => {
-      if (ele.movement === 'out') {
-        sum += -Math.abs(ele.quantity);
-      } else {
-        sum += ele.quantity;
-      }
-})
-  //if item is less than or equal to zero, return false, else return true 
-  if (sum <= 0) {return false}
-  else {return true};
+  currentItems.forEach((ele) => {
+    if (ele.movement === "out") {
+      sum += -Math.abs(ele.quantity);
+    } else {
+      sum += ele.quantity;
+    }
+  });
+  //if item is less than or equal to zero, return false, else return true
+  if (sum <= 0) {
+    return false;
+  } else {
+    return true;
+  }
+};
 
-}
-
-
-//Uncomment for tests! 
+//Uncomment for tests!
 //console.log(isItemAvailable(101, transactions)); // false
 //console.log(isItemAvailable(105, transactions)); // true
-
-
-
- 

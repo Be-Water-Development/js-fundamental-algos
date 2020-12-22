@@ -10,20 +10,19 @@
 
 const TODAY = toDate("2018-08-05");
 
-
 function toDate(string) {
   return new Date(`${string}T00:00:00`);
 }
 
 function toString(date) {
-  //changed getYear to getFullYear, per MDN bad practice to use getYear. 
-  //getMonth is corrupting the string, month's are being shifted down since month runs from a zero based index system, added one to correct 
-  //get day is also corrupting the string, need to use get date for date of the month 
-  //added .padStart to include 0's before month and days 1-9. 
+  //changed getYear to getFullYear, per MDN bad practice to use getYear.
+  //getMonth is corrupting the string, month's are being shifted down since month runs from a zero based index system, added one to correct
+  //get day is also corrupting the string, need to use get date for date of the month
+  //added .padStart to include 0's before month and days 1-9.
   const year = date.getFullYear();
   const month = `${date.getMonth() + 1}`.padStart(2, "0");
   const day = `${date.getDate()}`.padStart(2, "0");
-  
+
   return `${year}-${month}-${day}`;
 }
 
@@ -58,8 +57,6 @@ const offeredClasses = {
 };
 
 function getCompatibleEvents(classes, calendar) {
-
-
   function isAvailable(date) {
     const dateStr = toString(date);
     return !calendar[dateStr] || calendar[dateStr].length === 0;
@@ -69,8 +66,7 @@ function getCompatibleEvents(classes, calendar) {
 
   Object.keys(classes).forEach((className) => {
     const classDates = classes[className].map(toDate);
-    
-     
+
     if (classDates.some(isInThePast)) {
       return;
     }
@@ -85,4 +81,3 @@ function getCompatibleEvents(classes, calendar) {
 
 console.log(getCompatibleEvents(offeredClasses, myCalendar));
 // expected: ["Mike's Hikes", "Powerboating 101"]
-

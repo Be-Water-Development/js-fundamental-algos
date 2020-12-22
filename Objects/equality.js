@@ -4,49 +4,60 @@
 
 // Write a function objectsEqual that accepts two object arguments and returns true or false depending on whether the objects have the same key/value pairs.
 
-
-//Notes: I am dissapointed in my solution, I had a lot of trouble implementing this, I am breaking DRY and this was overall a big struggle. 
-//Issues: With undefined as a value, cannot use forEach or reduce, how else can you implment a loop with undefined? 
+//Notes: I am dissapointed in my solution, I had a lot of trouble implementing this, I am breaking DRY and this was overall a big struggle.
+//Issues: With undefined as a value, cannot use forEach or reduce, how else can you implment a loop with undefined?
 //https://stackoverflow.com/questions/40297442/ways-to-iterate-over-undefined-in-arrays
-//Tried using spread operator, was not a sucess. 
+//Tried using spread operator, was not a sucess.
 
-
-//declare a function objectsEqual, two objects are parameters 
+//declare a function objectsEqual, two objects are parameters
 function objectsEqual(obj1, obj2) {
-    //set a variable same equal to false 
-    let same = false;
-    //generate variables to hold object keys and values in for each object. 
-    const key1 = Object.keys(obj1); 
-    const key2 = Object.keys(obj2); 
-    const value1 = Object.values(obj1); 
-    const value2 = Object.values(obj2); 
-   
+  //set a variable same equal to false
+  let same = false;
+  //generate variables to hold object keys and values in for each object.
+  const key1 = Object.keys(obj1);
+  const key2 = Object.keys(obj2);
+  const value1 = Object.values(obj1);
+  const value2 = Object.values(obj2);
 
-//set a conditional that returns false if lengths of keys and values are not equal
-if (key1.length !== key2.length && value1.length !== value2.length) {return same};
-//if the arrays are empty, set same equal to true, return same. (I really hate this, there must be a better way)
-if (key1.length === 0 && key2.length === 0 && value1.length === 0 && value2.length === 0) {same = true; return same};
+  //set a conditional that returns false if lengths of keys and values are not equal
+  if (key1.length !== key2.length && value1.length !== value2.length) {
+    return same;
+  }
+  //if the arrays are empty, set same equal to true, return same. (I really hate this, there must be a better way)
+  if (
+    key1.length === 0 &&
+    key2.length === 0 &&
+    value1.length === 0 &&
+    value2.length === 0
+  ) {
+    same = true;
+    return same;
+  }
 
-//using a for loop, check to see if key's are equal at corresponding indexes 
-for (let i = 0; i<key1.length; i++) {
+  //using a for loop, check to see if key's are equal at corresponding indexes
+  for (let i = 0; i < key1.length; i++) {
     if (key1[i] === key2[i]) {
-        same = true;
-    } else {same = false};
-}
+      same = true;
+    } else {
+      same = false;
+    }
+  }
 
-//using a for loop, check to see if values's are equal at corresponding indexes 
-for (let i = 0; i<value1.length; i++) {
+  //using a for loop, check to see if values's are equal at corresponding indexes
+  for (let i = 0; i < value1.length; i++) {
     if (value1[i] === value2[i]) {
-        same = true;
-    } else {same = false};
+      same = true;
+    } else {
+      same = false;
+    }
+  }
+
+  //return same
+  return same;
 }
 
-//return same 
-    return same
-}
-
-//uncomment for tests 
+//uncomment for tests
 //console.log(objectsEqual({ a: "foo" }, { a: "foo" })); // true
 //console.log(objectsEqual({ a: "foo", b: "bar" }, { a: "foo" })); // false
 //console.log(objectsEqual({}, {})); // true
-//console.log(objectsEqual({ a: "foo", b: undefined }, { a: "foo", c: 1 })); // false 
+//console.log(objectsEqual({ a: "foo", b: undefined }, { a: "foo", c: 1 })); // false

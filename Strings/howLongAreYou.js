@@ -1,19 +1,17 @@
-// Write a function that takes a string as an argument, and returns an array that contains 
+// Write a function that takes a string as an argument, and returns an array that contains
 //every word from the string, with each word followed by a space and the word's length.
 // If the argument is an empty string or if no argument is passed, the function should return an empty array.
 
 //declare a function wordLengths, parameter string
 function wordLengths(string) {
-    //conditional to check if undefined or empty string, if so, return empty array 
-    if (string === undefined || string === "") {return []}
+  //conditional to check if undefined or empty string, if so, return empty array
+  if (string === undefined || string === "") {
+    return [];
+  }
 
-    //convert string into an array with split, using map, add the item length to each array item. 
-    return string.split(" ").map(item => item + " " + item.length)
+  //convert string into an array with split, using map, add the item length to each array item.
+  return string.split(" ").map((item) => item + " " + item.length);
 }
-
-
-
-
 
 // You may assume that every pair of words in the string will be separated by a single space.
 

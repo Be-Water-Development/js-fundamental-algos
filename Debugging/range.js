@@ -9,7 +9,7 @@
 function rangeLoop(start, end) {
   const range = [];
 
-  for (let element = start; element <= end; element++) { 
+  for (let element = start; element <= end; element++) {
     range.push(element);
   }
 
@@ -17,11 +17,12 @@ function rangeLoop(start, end) {
 }
 
 function range(start, end) {
-  if (!end) { //set conditional to see if only one parameter is given
-    end = start; //assigned end value to start value 
-    start = 0; //reassigned start to zero 
+  if (!end) {
+    //set conditional to see if only one parameter is given
+    end = start; //assigned end value to start value
+    start = 0; //reassigned start to zero
   }
-  return rangeLoop(start, end); //changed name of range to rangeLoop, range was stuck calling itself in infinite loop 
+  return rangeLoop(start, end); //changed name of range to rangeLoop, range was stuck calling itself in infinite loop
 }
 
 // Examples

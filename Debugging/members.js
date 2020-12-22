@@ -48,7 +48,5 @@ addMember("331-9191", "Earl Smith"); // Invalid member information.
 
 console.log(memberDirectory);
 
-
-
-//The \w metacharacter is used to find a word character, a-z, A-Z, 0-9. So numeric values pass this regex expression. Changed \w to \D which matches any character that 
-//is not a digit, thus eliminating the invalid entry of "5mith". 
+//The \w metacharacter is used to find a word character, a-z, A-Z, 0-9. So numeric values pass this regex expression. Changed \w to \D which matches any character that
+//is not a digit, thus eliminating the invalid entry of "5mith".
