@@ -1,4 +1,4 @@
-// Write a function that checks whether or not a particular destination is included within destinations, 
+// Write a function that checks whether or not a particular destination is included within destinations,
 //without using the built-in method Array.prototype.includes()
 
 let destinations = [
@@ -20,31 +20,34 @@ let obj = {
   1: "squirrels",
   2: "cats",
   3: "bacon",
-}
+};
 
-//declare a function contains, city and array as parameters 
+//declare a function contains, city and array as parameters
 function contains(city, array) {
   //check to see if city is a string, and array is an array.
   if (typeof city == "string" && Array.isArray(array)) {
     //set a variable equal to false to store our search result
     let found = false;
-    //using forEach, flip through the array. 
-      array.forEach((ele) => {
-        //if the element in the array is equal to the city, set found to true.
-          if (ele === city) {
-          found = true;
-          }
-  });
-    //return found. If no matches are found, found is already set to false. 
+    //using forEach, flip through the array.
+    array.forEach((ele) => {
+      //if the element in the array is equal to the city, set found to true.
+      if (ele === city) {
+        found = true;
+      }
+    });
+    //return found. If no matches are found, found is already set to false.
     return found;
     //if parameters are incorrectly formatted, return string
-} else return "parameters must be a string and an array"
+  } else return "parameters must be a string and an array";
 }
-
-
 
 //Uncomments for tests!
 //console.log(contains("Barcelona", destinations)); // true
 //console.log(contains("Nashville", destinations)); // false
 //console.log(contains(false, destinations)); // "parameters must be a string and an array"
 //console.log(contains("Nashville", obj)); // "parameters must be a string and an array"
+
+// Love the guard clauses--
+// I would not use forEach here; forEach hits every element in the array no matter what
+// if the first element IS the city and the list is 1 million items long you
+// wouldnt want to keep searching...a for loop here that returns upon finding the city is the most effective
