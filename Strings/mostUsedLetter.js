@@ -4,7 +4,7 @@
 
 const mostUsedLetter = (str) => {
     const counts = str.toLowerCase().split('').reduce((acc, val) => {
-        if (val.match(/[a-z]/)) {
+        if (new RegExp(/[a-z]/).test(val)) {
             if (!acc[val]) {
                 acc[val] = 1
             } else {
@@ -13,9 +13,7 @@ const mostUsedLetter = (str) => {
         }
         return acc
     }, {})
-    console.log("Counts of each letter in the Paragraph:", counts)
     const greatest = Math.max(...Object.values(counts))
-    console.log("Highest value:", greatest)
     const output = {}
     for (const property in counts) {
         if (counts[property] === greatest) {

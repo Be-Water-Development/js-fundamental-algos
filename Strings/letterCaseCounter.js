@@ -9,7 +9,7 @@ const letterCaseCount = (str) => {
         return {"lowercase": 0, "uppercase": 0, "neither": 0};
     } else {
         return str.split('').reduce((acc, val) => {
-            if (val.match(/[a-z]/)) {
+            if (new RegExp(/[a-z]/).test(val)) {
                 if (Object.keys(acc).length === 0) {
                     acc["lowercase"] = 1;
                     acc["uppercase"] = 0;
@@ -17,7 +17,7 @@ const letterCaseCount = (str) => {
                 } else {
                 acc["lowercase"] ++  
                 }
-            } else if (val.match(/[A-Z]/)) {
+            } else if (new RegExp(/[A-Z]/).test(val)) {
                 if (Object.keys(acc).length === 0) {
                     acc["lowercase"] = 0;
                     acc["uppercase"] = 1;
