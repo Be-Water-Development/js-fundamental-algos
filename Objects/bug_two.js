@@ -29,7 +29,6 @@ let item = {
   price: 50,
   quantity: 100,
   discount: function (percent) {
-    // console.log(this.price, percent)
     let discount = (this.price * percent) / 100;
     // we can just return the price - discount
     // instead of modifying the price value in the object

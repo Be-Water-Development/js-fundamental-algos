@@ -1,7 +1,7 @@
 // Write code that calculates how expensive all the vehicles combined are.
 
 const totalCost = (...args) => { 
-  return (Array(...args)).reduce((acc, el) => {
+  return args.reduce((acc, el) => {
     acc += parseInt(el.price) * 1000
     return acc
   }, 0)

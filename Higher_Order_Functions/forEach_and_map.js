@@ -18,8 +18,8 @@ const forEach = (arr, cb) => {
 
 const newMap = (arr, cb) => {
     let outArr = [];
-    cb(arr, (el) => {
-        return outArr.push(el +2);
+    forEach(arr, (el) => {
+        outArr.push(el +2);
     })
     return outArr;
 }
@@ -27,7 +27,7 @@ const newMap = (arr, cb) => {
 const alternateMap = (arr, cb) => {
     let outArr = []
     forEach(arr, (el) => {
-        return outArr.push(cb(el))
+        outArr.push(cb(el))
     })
     return outArr;
 }
