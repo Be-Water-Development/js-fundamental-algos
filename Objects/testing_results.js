@@ -8,28 +8,24 @@
 // We can safely assume that each play will be 4 points or less
 
 const gameResult = (cb1, cb2) => {
-  // declare two constants to keep track of the total score
+
+  // declare two variables to keep track of the total score
   let teamOneTotal = 0;
   let teamTwoTotal = 0;
   const teamOneObj = cb1()
   const teamTwoObj = cb2()
   const teamOneName = cb1.name.charAt(0).toUpperCase() + cb1.name.slice(1)
   const teamTwoName = cb2.name.charAt(0).toUpperCase() + cb2.name.slice(1)
-  // how to isolate the points as numbers
-  // console.log(Number(cb1().firstQuarter[0].play()[0]))
+ 
   // go through the first team's objects values
   for (const property in teamOneObj) {
     teamOneObj[property].forEach((el) => {
-      // ensure you're getting through the quarters/shooters
-      // console.log("property", property, "shooter", el.shooter)
       teamOneTotal += Number(el.play()[0])
     })
   }
   // go through the second team's objects values
   for (const property in teamTwoObj) {
       teamTwoObj[property].forEach((el) => {
-        // ensure you're getting through the quarters/shooters
-        // console.log("property", property, "shooter", el.shooter)
         teamTwoTotal += Number(el.play()[0])
     })  
   }

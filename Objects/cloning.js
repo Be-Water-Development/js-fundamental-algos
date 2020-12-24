@@ -11,8 +11,6 @@ function clone(obj) {
   for (const prop in obj) {
     output[prop] = obj[prop]
   }
-  // verify the clone is the same as the input object
-  console.log(output)
   return output
 }
 

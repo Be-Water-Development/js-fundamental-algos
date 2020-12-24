@@ -5,11 +5,6 @@
 // You may assume that a word is any sequence of non-whitespace characters.
 
 const wordCap = (str) => {
-    // split the string to isolate the words in an array
-    // use map to capitalize the first letter of each word
-    // and then take the rest of the string and make sure it is lowercase
-    // finally, use the join method on the array with a space character
-    // to return the output string
     return str.split(" ").map((el) => {
         return el[0].toUpperCase() + el.substr(1).toLowerCase()
     }).join(" ")

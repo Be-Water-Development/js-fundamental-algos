@@ -12,8 +12,6 @@ let obj = {
 };
 
 for (let prop in obj) {
-  // what are the type of properties in the object?
-  // console.log("property type", typeof(prop))
   if (prop === true) {
     console.log("It's true!");
   }

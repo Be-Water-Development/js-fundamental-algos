@@ -3,18 +3,17 @@
 // false otherwise. Ignore characters that are not alphabetic.
 
 const isUppercase = (str) => {
-    output = true
-    str.split('').forEach((el) => {
+    return str.split('').reduce((acc, el) => {
         if (new RegExp(/[a-z]/).test(el)) {
-            output = false
+            acc = false
         }
-    })
-    return output
+        return acc
+    }, true)
 }
 
 console.log(isUppercase("t")); // false
 console.log(isUppercase("T")); // true
-console.log(isUppercase("Four Score")); // false
+console.log(isUppercase("Four SCorE")); // false
 console.log(isUppercase("FOUR SCORE")); // true
 console.log(isUppercase("4SCORE!")); // true
 console.log(isUppercase("")); // true

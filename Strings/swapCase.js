@@ -5,9 +5,9 @@
 
 const swapCase = (str) => {
     return str.split('').map((el) => {
-        if (el.match(/[A-Z]/)) {
+        if (new RegExp(/[A-Z]/).test(el)) {
             return el.toLowerCase()
-        } else if (el.match(/[a-z]/)) {
+        } else if (new RegExp(/[a-z]/).test(el)) {
             return el.toUpperCase()
         } else {
             return el;

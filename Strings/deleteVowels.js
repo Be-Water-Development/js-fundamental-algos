@@ -5,7 +5,6 @@
 // [any char within] i = case insensitive g = global search
 
 const removeVowels = (arr) => {
-    //use map to go through the array
     return arr.map((el) => {
         return el.replace(/[aeiou]/ig,'')
     })

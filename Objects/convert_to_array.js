@@ -8,9 +8,7 @@ let person = {
 };
 
 const convertToArray = (obj) => {
-  // output outside array
   let outArr = []
-  // iterate through the object, creating inner arrays for each key/value pair
   for (const prop in obj) {
     let inArr = []
     inArr.push(prop, obj[prop])
