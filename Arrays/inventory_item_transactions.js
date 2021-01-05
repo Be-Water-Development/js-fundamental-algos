@@ -1,7 +1,7 @@
 // This exercise already had the answer filled in
 
-// Write a function that takes two arguments, inventoryItem and transactions, 
-// and returns an array containing only the transactions for the specified 
+// Write a function that takes two arguments, inventoryItem and transactions,
+// and returns an array containing only the transactions for the specified
 // inventoryItem.
 
 const transactions = [
@@ -17,11 +17,8 @@ const transactions = [
   { id: 103, movement: "out", quantity: 15 },
 ];
 
-const transactionsFor = (inventoryItem, transactions) => {
-  return transactions.filter((el) => {
-    return el.id === inventoryItem
-  })
-};
+const transactionsFor = (inventoryItem, transactions) =>
+  transactions.filter((el) => el.id === inventoryItem);
 
 console.log(transactionsFor(101, transactions));
 

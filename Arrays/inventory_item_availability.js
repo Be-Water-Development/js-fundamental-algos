@@ -1,12 +1,12 @@
-// Building on the previous exercise, write a function that returns true or 
-// false based on whether or not an inventory item is available. As before, the 
-// function takes two arguments: an inventory item and a list of transactions. 
-// The function should return true only if the sum of the quantity values of the 
-// item's transactions is greater than zero. Notice that there is a movement 
-// property in each transaction object. A movement value of 'out' will decrease 
+// Building on the previous exercise, write a function that returns true or
+// false based on whether or not an inventory item is available. As before, the
+// function takes two arguments: an inventory item and a list of transactions.
+// The function should return true only if the sum of the quantity values of the
+// item's transactions is greater than zero. Notice that there is a movement
+// property in each transaction object. A movement value of 'out' will decrease
 // the item's quantity.
 
-// You may (and should) use the transactionsFor function from 
+// You may (and should) use the transactionsFor function from
 // the previous exercise.
 
 const transactions = [
@@ -27,15 +27,19 @@ const transactionsFor = (inventoryItem, transactions) => {
 };
 
 const isItemAvailable = (inventoryItem, transactions) => {
-  return transactionsFor(inventoryItem, transactions).reduce((acc, el) => {
-    if (el.movement === 'in') {
-      acc += el.quantity
-    } else {
-      acc -= el.quantity
-    }
-    return acc
-  }, 0) > 0
+  return (
+    transactionsFor(inventoryItem, transactions).reduce((acc, el) => {
+      if (el.movement === "in") {
+        acc += el.quantity;
+      } else {
+        acc -= el.quantity;
+      }
+      return acc;
+    }, 0) > 0
+  );
 };
 
 console.log(isItemAvailable(101, transactions)); // false
 console.log(isItemAvailable(105, transactions)); // true
+
+//good stuff
