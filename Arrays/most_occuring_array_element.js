@@ -36,4 +36,8 @@ const mode = (arr) => {
 console.log(mode(arr)); // returns { '7': 4, '9', 4 }
 console.log(mode(obj)); // returns null
 
-// good work
+// good work; one thing to add here is your code has greater time complexity than is necessary
+// you use reduce which is a loop; then a for loop which again loops and Object.values is a loop as well
+// so you are a n to the third power, exponential runs for every element  you add.
+// it is possible to do in time length n-- aka a single traversal, though its not worth burning your energy working on it
+// something to come back to if you have the inclination

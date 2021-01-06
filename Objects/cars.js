@@ -1,11 +1,12 @@
 // Write code that calculates how expensive all the vehicles combined are.
 
-const totalCost = (...args) => { 
+const totalCost = (...args) => {
   return args.reduce((acc, el) => {
-    acc += parseInt(el.price) * 1000
-    return acc
-  }, 0)
-}
+    acc += parseInt(el.price) * 1000; //parseInt ignores non numeric values, nice find
+    // you could also split on regex[0-9] just offering other ideas
+    return acc;
+  }, 0);
+};
 
 let vehicleOne = {
   manufacturer: "Tesla",

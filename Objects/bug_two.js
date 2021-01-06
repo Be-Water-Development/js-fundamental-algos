@@ -1,11 +1,11 @@
-// A grocery store uses a JavaScript function to calculate discounts on 
+// A grocery store uses a JavaScript function to calculate discounts on
 // various items. They are testing out
 // various percentage discounts but are getting unexpected results.
 // Go over the code, and identify the reason why they aren't getting
-// the expected discounted prices from the function. Then, modify the 
+// the expected discounted prices from the function. Then, modify the
 // code so that it produces the correct results.
 
-// original 
+// original
 
 // let item = {
 //   name: "Foo",
@@ -45,6 +45,8 @@ console.log(item.discount(50)) > // should return 25
 
 // the reason that the function discount returns the incorrect prices
 // in example 2 and 3 is because the function modifies the original price
-// value. This means that for the second and third function runs, the price 
+// value. This means that for the second and third function runs, the price
 // value is 40 and 20 instead of 50, resulting in incorrect discounted price
 // values.
+
+// very nice-- some functions and data types are mutable others are not. numbers mutate the original

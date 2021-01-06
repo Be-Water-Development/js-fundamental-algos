@@ -12,7 +12,7 @@ function createGreeter(name) {
         case "morning":
           // bug - to access an anonymous object's values
           // we needed to use this.<key>. Since <key> is not
-          // a variable, it was undefined in the output. 
+          // a variable, it was undefined in the output.
           msg += `${this.morning} ${name}`;
           break;
         case "afternoon":
@@ -31,3 +31,5 @@ function createGreeter(name) {
 
 let helloVictor = createGreeter("Victor");
 console.log(helloVictor.greet("morning")); // should output ===> Good Morning Victor
+
+// very nice
