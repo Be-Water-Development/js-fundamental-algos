@@ -1,18 +1,18 @@
-// Take this array and convert it to an object where the key is the 
-// element's index and the value is an object whose key is the type of 
+// Take this array and convert it to an object where the key is the
+// element's index and the value is an object whose key is the type of
 // the stringified element and the value is the type of the element.
 
-// Bonus...what would happen to the result if you have two elements 
+// Bonus...what would happen to the result if you have two elements
 // of the same type?
 
-// Answer - they would be handled as different keys in the output object 
+// Answer - they would be handled as different keys in the output object
 // because the object is built based on the element's index in the input array
 
 const arr = [
   "a",
   504,
   [1, 2, 3],
-  [4, 5, 6], 
+  [4, 5, 6],
   { key: "value" },
   true,
   null,
@@ -20,17 +20,16 @@ const arr = [
   () => console.log("this is a simple function"),
 ];
 
-
-
+// beautiful; trying to trip you up with nested loops and types-- great work using the third available param in reduce
 const types = (arr) => {
   return arr.reduce((acc, val, ind) => {
-    acc[ind] = {}
-    acc[ind][val] = typeof(val)
-    return acc
-  }, {})
-}
+    acc[ind] = {};
+    acc[ind][val] = typeof val;
+    return acc;
+  }, {});
+};
 
-console.log(types(arr))
+console.log(types(arr));
 
 // returns
 

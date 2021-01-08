@@ -6,14 +6,13 @@
 
 const after = (num, cb) => {
   let counter = 0;
-  const innerFunc = (...params) => {
-    counter ++
+  return (...params) => {
+    counter++;
     if (counter >= num) {
-      return cb(...params)
+      return cb(...params);
     }
-  }
-  return innerFunc
-}
+  };
+};
 
 const called = function (string) {
   return "hello " + string;
@@ -21,6 +20,8 @@ const called = function (string) {
 const afterCalled = after(3, called);
 
 // UNCOMMENT THESE LINES TO TEST YOUR WORK
-console.log(afterCalled('world')); // -> undefined is printed
-console.log(afterCalled('world')); // -> undefined is printed
-console.log(afterCalled('world')); // -> 'hello world' is printed
+console.log(afterCalled("world")); // -> undefined is printed
+console.log(afterCalled("world")); // -> undefined is printed
+console.log(afterCalled("world")); // -> 'hello world' is printed
+
+// very nice well done, i modified one code smell thing, very small

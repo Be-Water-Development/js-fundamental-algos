@@ -1,4 +1,4 @@
-// Write a function that takes the two teams, cycles through every play 
+// Write a function that takes the two teams, cycles through every play
 // in every quarter and return the score and winner at the end of the game
 
 // structure of lakers () and blazers ()
@@ -8,35 +8,34 @@
 // We can safely assume that each play will be 4 points or less
 
 const gameResult = (cb1, cb2) => {
-
   // declare two variables to keep track of the total score
   let teamOneTotal = 0;
   let teamTwoTotal = 0;
-  const teamOneObj = cb1()
-  const teamTwoObj = cb2()
-  const teamOneName = cb1.name.charAt(0).toUpperCase() + cb1.name.slice(1)
-  const teamTwoName = cb2.name.charAt(0).toUpperCase() + cb2.name.slice(1)
- 
+  const teamOneObj = cb1();
+  const teamTwoObj = cb2();
+  const teamOneName = cb1.name.charAt(0).toUpperCase() + cb1.name.slice(1);
+  const teamTwoName = cb2.name.charAt(0).toUpperCase() + cb2.name.slice(1);
+
   // go through the first team's objects values
   for (const property in teamOneObj) {
     teamOneObj[property].forEach((el) => {
-      teamOneTotal += Number(el.play()[0])
-    })
+      teamOneTotal += Number(el.play()[0]);
+    });
   }
   // go through the second team's objects values
   for (const property in teamTwoObj) {
-      teamTwoObj[property].forEach((el) => {
-        teamTwoTotal += Number(el.play()[0])
-    })  
+    teamTwoObj[property].forEach((el) => {
+      teamTwoTotal += Number(el.play()[0]);
+    });
   }
   if (teamOneTotal > teamTwoTotal) {
-    return `${teamOneName}: ${teamOneTotal}, ${teamTwoName}: ${teamTwoTotal}...${teamOneName.toUpperCase()} WIN!`
+    return `${teamOneName}: ${teamOneTotal}, ${teamTwoName}: ${teamTwoTotal}...${teamOneName.toUpperCase()} WIN!`;
   } else if (teamTwoTotal > teamOneTotal) {
-    return `${teamTwoName}: ${teamTwoTotal}, ${teamOneName}: ${teamOneTotal}...${teamTwoName.toUpperCase()} WIN!`
+    return `${teamTwoName}: ${teamTwoTotal}, ${teamOneName}: ${teamOneTotal}...${teamTwoName.toUpperCase()} WIN!`;
   } else {
-    return "It was a tie game today folks... but that doesn't happen in the NBA."
+    return "It was a tie game today folks... but that doesn't happen in the NBA.";
   }
-}
+};
 
 const lakers = () => {
   const plays = {
@@ -83,3 +82,5 @@ const blazers = () => {
 };
 
 console.log(gameResult(blazers, lakers)); // returns the string => "Lakers: 15, Blazers: 12...LAKERS WIN!"
+
+// nice numerous ways to do this one good stuff

@@ -1,22 +1,23 @@
-// Write a function that takes a string as an argument, 
-// and returns an array that contains every word from the string, 
+// Write a function that takes a string as an argument,
+// and returns an array that contains every word from the string,
 // with each word followed by a space and the word's length.
-// If the argument is an empty string or if no argument is passed, 
+// If the argument is an empty string or if no argument is passed,
 // the function should return an empty array.
 
-// You may assume that every pair of words in the string will be 
+// You may assume that every pair of words in the string will be
 // separated by a single space.
 
 const wordLengths = (str) => {
-    if (!str || str.length === 0) {
-        return [];
-    } else {
-    // split the string, use map to return a new array with the word and length
-    return str.split(" ").map((el) => {
-        return `${el} ${el.length}`
-    })
-    }
-}
+  if (!str || str.length === 0) {
+    return []; // nice
+  }
+  // split the string, use map to return a new array with the word and length
+  return str.split(" ").map((el) => {
+    return `${el} ${el.length}`;
+  });
+};
+
+// good stuff just killing your elses
 
 console.log(wordLengths("cow sheep chicken"));
 // ["cow 3", "sheep 5", "chicken 7"]

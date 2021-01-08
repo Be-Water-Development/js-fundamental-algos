@@ -1,18 +1,18 @@
-// There are a lot of exciting classes offered in our region. 
+// There are a lot of exciting classes offered in our region.
 // We wrote a small script that checks which ones are
-// still upcoming and compatible with our calendar. 
+// still upcoming and compatible with our calendar.
 // We must be available to attend all sessions
-// of a particular class in order to sign up for it. 
+// of a particular class in order to sign up for it.
 // We can always arrange that on weekends,
 // but for weekdays we have to check whether our calendar is free.
 
 // Although the code below runs, something is wrong with it.
-// Why is everything except for the Back To The Future Movie Night 
+// Why is everything except for the Back To The Future Movie Night
 // in the list of compatible classes?
 
 // Hint: Look up Date --> its a JS object :-)
 
-const TODAY = toDate("2018-08-01");
+const TODAY = toDate("2018-08-01"); // always use camel case for js -- this is python syntax where they lack 'const' to denote
 
 function toDate(string) {
   return new Date(`${string}T00:00:00`);
@@ -20,9 +20,11 @@ function toDate(string) {
 
 function toString(date) {
   // fix: (toString was formatting date in way that wasn't matching keys in myCalendar)
-  return `${date.getFullYear()}-${("0" + (date.getMonth() + 1)).slice(-2)}-${("0" + date.getDate()).slice(-2)}`;
+  return `${date.getFullYear()}-${("0" + (date.getMonth() + 1)).slice(-2)}-${(
+    "0" + date.getDate()
+  ).slice(-2)}`;
   // old toString(date)
-  // return `${date.getYear()}-${date.getMonth()}-${date.getDay()}`;
+  // return `${date.getYear()}-${date.getMonth()}-${date.getDay()}`; ---> GREAT DEBUGGING!
 }
 
 function isInThePast(date) {
@@ -55,14 +57,17 @@ const offeredClasses = {
   "Discover Parachuting": ["2018-11-02"],
 };
 
+//EXCELLENT CODE SMELL-- SUPER CLEAN EXACTLY HOW WE WOULD WRITE IT PROFFESIONALLY
+
 function getCompatibleEvents(classes, calendar) {
+  // LOVE THIS; THIS FUNCTION IS ONLY NECESSARY WITHIN THIS SCOPE SO KEEP IT TIGHTLY SCOPED
   function isAvailable(date) {
     const dateStr = toString(date);
     return !calendar[dateStr] || calendar[dateStr].length === 0;
   }
 
   const compatibleClasses = [];
-
+  // VERY FUNCTIONAL==> WILL COVER THIS IN REACT BUT THIS IS VERY NICE STYLE AS YOU'LL SEE
   Object.keys(classes).forEach((className) => {
     const classDates = classes[className].map(toDate);
 
@@ -80,3 +85,5 @@ function getCompatibleEvents(classes, calendar) {
 
 console.log(getCompatibleEvents(offeredClasses, myCalendar));
 // expected: ["Mike's Hikes", "Powerboating 101"]
+
+//ABSOLUTELY GORGEOUS

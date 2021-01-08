@@ -6,10 +6,12 @@
 // Answer
 
 // We weren't seeing the expected result because Array.forEach cannot return a value
-// before completing the iteration through the entire array. This meant that 
-// the return statement was not being executed. By switching the code to use a 
-// traditional for loop, we enable it to return true and exit the loop once it 
-// runs into a reserved keyword. 
+// before completing the iteration through the entire array. This meant that
+// the return statement was not being executed. By switching the code to use a
+// traditional for loop, we enable it to return true and exit the loop once it
+// runs into a reserved keyword.
+
+// perfect -- a concept usually used for optimization
 
 const RESERVED_KEYWORDS = [
   "break",
@@ -59,7 +61,7 @@ const RESERVED_KEYWORDS = [
 function isReserved(name) {
   // Old function - used forEach
   // RESERVED_KEYWORDS.forEach((reserved) => {
-  // Fixed method - uses traditional for loop. 
+  // Fixed method - uses traditional for loop.
   for (let i = 0; i < RESERVED_KEYWORDS.length; i++) {
     // console.log(RESERVED_KEYWORDS[i])
     if (name === RESERVED_KEYWORDS[i]) {

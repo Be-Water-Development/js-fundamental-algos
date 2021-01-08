@@ -1,31 +1,38 @@
-// Write a function that takes in a block of text and returns the 
+// Write a function that takes in a block of text and returns the
 // letter and count that is found most frequently
 // Write your own test cases here.
 
 const mostUsedLetter = (str) => {
-    const counts = str.toLowerCase().split('').reduce((acc, val) => {
-        if (new RegExp(/[a-z]/).test(val)) {
-            if (!acc[val]) {
-                acc[val] = 1
-            } else {
-                acc[val]++
-            }
+  const counts = str
+    .toLowerCase()
+    .split("")
+    .reduce((acc, val) => {
+      if (new RegExp(/[a-z]/).test(val)) {
+        if (!acc[val]) {
+          acc[val] = 1;
+        } else {
+          acc[val]++;
         }
-        return acc
-    }, {})
-    const greatest = Math.max(...Object.values(counts))
-    const output = {}
-    for (const property in counts) {
-        if (counts[property] === greatest) {
-            output[property] = counts[property]
-        }
+      }
+      return acc;
+    }, {});
+  const greatest = Math.max(...Object.values(counts));
+  const output = {};
+  for (const property in counts) {
+    if (counts[property] === greatest) {
+      output[property] = counts[property];
     }
-    return output
-}
+  }
+  return output;
+};
 
-const paragraph1 = "Hello my name a Borat and I'm from the glorious nation of Kazakhstan"
-const paragraph2 = "fndsajkfgbrealkjsfgbralsdfbehrlasbfehirabfahels   efhdujaiseldbfduasbffbrdhjak"
-const paragraph3 = "578497&*^%$#( b b  ()Y*(ggghuk"
+const paragraph1 =
+  "Hello my name a Borat and I'm from the glorious nation of Kazakhstan"; //hahhahahahah
+const paragraph2 =
+  "fndsajkfgbrealkjsfgbralsdfbehrlasbfehirabfahels   efhdujaiseldbfduasbffbrdhjak";
+const paragraph3 = "578497&*^%$#( b b  ()Y*(ggghuk";
 console.log(mostUsedLetter(paragraph1));
 console.log(mostUsedLetter(paragraph2));
 console.log(mostUsedLetter(paragraph3));
+
+// good stuff i can dig it
