@@ -4,6 +4,8 @@
 // one representing the number of characters that are uppercase letters, 
 //vand one representing the number of characters that are neither.
 
+// redo this with helper functions and avoiding the if/else cascade
+
 const letterCaseCount = (str) => {
     if (str.length === 0) {
         return {"lowercase": 0, "uppercase": 0, "neither": 0};

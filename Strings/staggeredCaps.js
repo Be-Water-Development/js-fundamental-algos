@@ -6,6 +6,8 @@
 // but should be counted as characters for determining when 
 // to switch between upper and lower case.
 
+//Re-write this without the if/else statements
+
 const staggeredCase = (str) => {
     // we can use even indices to capitalize and odd indices to lowercase
     return str.split('').map((el, ind, arr) => {

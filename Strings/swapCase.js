@@ -3,6 +3,8 @@
 // letter changed to uppercase and every uppercase letter changed to 
 // lowercase. Leave all other characters unchanged.
 
+// rewrite this without if/else statements
+
 const swapCase = (str) => {
     return str.split('').map((el) => {
         if (new RegExp(/[A-Z]/).test(el)) {
