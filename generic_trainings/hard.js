@@ -100,6 +100,9 @@ function uniq(array) {
 // Gets the index at which the first occurrence of value is found in array
 // Returns -1 if element is not in array
 // DO NOT USE THE BUILT-IN INDEXOF function
+
+// Redo this. Had a single & 
+
 console.log("-----indexOf-----")
 console.log(indexOf([11,22,33,11], 11)); // 0
 console.log(indexOf([11,22,33], 5)); // -1
@@ -166,6 +169,8 @@ function reduce(array, callback, start) {
   return storedVal
 }
 
+//---Redo this, congested code - improve style---
+
 // Takes an array and a function as arguments.
 // Returns true if the function produces true when each array element is passed to it.
 // Otherwise it returns false.
@@ -210,6 +215,9 @@ function flatten(array) {
 }
 
 // Recursively flattens a nested array.
+
+// Not recursive - recursive means to call itself
+
 console.log("-----flattenDeep-----")
 console.log(flattenDeep([1, [[2, 3, [4]]]])); // [1, 2, 3, 4]
 function flattenDeep(array) {
