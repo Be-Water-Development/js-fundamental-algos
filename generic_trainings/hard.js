@@ -101,7 +101,8 @@ function uniq(array) {
 // Returns -1 if element is not in array
 // DO NOT USE THE BUILT-IN INDEXOF function
 
-// Redo this. Had a single & 
+// Redo this. Had a single &. 
+// Added && and worked the same way
 
 console.log("-----indexOf-----")
 console.log(indexOf([11,22,33,11], 11)); // 0
@@ -109,7 +110,7 @@ console.log(indexOf([11,22,33], 5)); // -1
 function indexOf(array, value) {
   let counter = 0
   return array.reduce((acc, val, ind) => {
-    if (val === value & counter === 0) {
+    if (val === value && counter === 0) {
       acc = ind
       counter ++
     }
@@ -183,22 +184,30 @@ console.log(every([2, 4, 7, 6], function(elem) {
 }));  // false
 // BONUS: use reduce in your answer
 // Not using the .every() array method
+
 function every(array, func) {
-  let outVal;
-  let boolArr = array.reduce((acc, val) => {
-    if (func(val)) {
-      acc.push(true)
-    } else acc.push(false)
-    return acc
-  },[])
-  for (let i = 0; i < boolArr.length; i++) {
-    if (!boolArr[i]) {
-      outVal = false
-      return outVal
-    } else outVal = true
-  } 
-  return outVal
+  return array.reduce((acc, val) => {
+    !func(val) ? acc = false : acc;
+    return acc;
+  }, true)
 }
+
+// function every(array, func) {
+//   let outVal;
+//   let boolArr = array.reduce((acc, val) => {
+//     if (func(val)) {
+//       acc.push(true)
+//     } else acc.push(false)
+//     return acc
+//   },[])
+//   for (let i = 0; i < boolArr.length; i++) {
+//     if (!boolArr[i]) {
+//       outVal = false
+//       return outVal
+//     } else outVal = true
+//   } 
+//   return outVal
+// }
 
 // Flattens a nested array.
 console.log("-----Flatten-----")
@@ -220,26 +229,66 @@ function flatten(array) {
 
 console.log("-----flattenDeep-----")
 console.log(flattenDeep([1, [[2, 3, [4]]]])); // [1, 2, 3, 4]
+
 function flattenDeep(array) {
-  return array.reduce((acc, val) => {
-      if (Array.isArray(val)) {
-        let initVal = val
-        while (initVal.some(elem => Array.isArray(elem))) {
-          initVal = initVal.reduce((acc, val) => {
-            if (Array.isArray(val)) {
-              val.forEach((el) => {
-                acc.push(el)
-              })
-            } else acc.push(val)
-            return acc
-          }, [])
-        }
-        initVal.forEach((el) => {
-          acc.push(el)
-        })
-      } else acc.push(val)
-      return acc
-    }, [])
+
+  // Termination case
+  if (!Array.isArray(array)) {
+    console.log("Terminated"); 
+    return;
+  }
+
+  // Base case
+  // if (array.filter((el) => {
+  //   return Array.isArray(el)
+  // }).length === 0) {
+  //   console.log("Base case");
+  //   return;
+  // }
+
+  // Recursion
+
+  // Next steps - figure out how to call flattenDeep on the appropriate array while
+  // generating an output array. Will figure it out then clean up
+  // 
+
+  let outArr = [];
+  for (let i = 0; i < array.length; i++) {
+    if (!Array.isArray(array[i])) outArr.push(array[i]);
+    if (Array.isArray(array[i])) {
+      let recArr = [];
+      recArr.push(array[i]);
+      return flattenDeep(recArr);
+    } 
+    console.log("OutArr: ", outArr);
+  }
+  console.log(outArr);
+  // return flattenDeep(recArr);
+  
+
 }
+
+
+// function flattenDeep(array) {
+//   return array.reduce((acc, val) => {
+//       if (Array.isArray(val)) {
+//         let initVal = val
+//         while (initVal.some(elem => Array.isArray(elem))) {
+//           initVal = initVal.reduce((acc, val) => {
+//             if (Array.isArray(val)) {
+//               val.forEach((el) => {
+//                 acc.push(el)
+//               })
+//             } else acc.push(val)
+//             return acc
+//           }, [])
+//         }
+//         initVal.forEach((el) => {
+//           acc.push(el)
+//         })
+//       } else acc.push(val)
+//       return acc
+//     }, [])
+// }
       
 
