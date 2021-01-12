@@ -239,33 +239,23 @@ function flattenDeep(array) {
   }
 
   // Base case
-  // if (array.filter((el) => {
-  //   return Array.isArray(el)
-  // }).length === 0) {
-  //   console.log("Base case");
-  //   return;
-  // }
+  if (array.filter((el) => {
+    return Array.isArray(el)
+  }).length === 0) {
+    console.log("Base case");
+    return array;
+  }
 
   // Recursion
-
-  // Next steps - figure out how to call flattenDeep on the appropriate array while
-  // generating an output array. Will figure it out then clean up
-  // 
-
-  let outArr = [];
-  for (let i = 0; i < array.length; i++) {
-    if (!Array.isArray(array[i])) outArr.push(array[i]);
-    if (Array.isArray(array[i])) {
-      let recArr = [];
-      recArr.push(array[i]);
-      return flattenDeep(recArr);
-    } 
-    console.log("OutArr: ", outArr);
-  }
-  console.log(outArr);
-  // return flattenDeep(recArr);
-  
-
+  return flattenDeep(array.reduce((acc, val) => {
+    if (Array.isArray(val)) {
+      val.forEach((el) => {
+        acc.push(el)
+      })
+    } else acc.push(val)
+    return acc
+  }, []))
+ 
 }
 
 
