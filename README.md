@@ -2,21 +2,26 @@
 
 ## Instructions
 
-* Clone locally. Note that the default branch is now DEVELOP. We are NOT working with MASTER here. MASTER is going to be 'pure' as far as I can help it. We are also NOT attempting to merge to DEVELOP. Like a real company, we want DEVELOP to be pure as well, but one step closer to the danger of modifications being the default. 
-* What we want is for you to create your own branch that will serve as your master. Follow the format `githubHandle-answers` so my branch will be `xavyr-answers`. Cut from this branch and push this branch. Then cut another branch that will eventually merge into the branch. This is your source of truth and the branch I will be checking out to review when you are 'done'. We will not be merging `githubHandle-answers` to anything. 
+* Clone locally.
+* You have a decision as to how you want to do this. You can checkout a new branch, code on it and merge to the default branch <b>develop<b> as devs do on teams. Or you can commit right to develop which will give you faster git history on your git contribution chart. Up to you, either works.
 
 <hr/>
 
 #### When Coding 
-Create a new branch, code, commit, push. Merge that branch, say `array-questions` to `githubHandle-answers`. Do this every 5-10 challenges at the bare min, do this daily. 
+Remember to commit and merge frequently. This builds your contribution chart. 
+Make sure to request code reviews via slack after each data type, which are broken up in directories.
 
 Code to...
 * make it work
 * optimize it
-* Edit to be as readable as possible
-
+* revise to be as readable as possible
 
 <hr/>
 
 For many you are going to be writing your own tests. 
-Take your time with these, consider edge cases, consider potecting against certion inputs
+Take your time with these, consider edge cases, consider potecting against certion inputs. Write the code be as dynamic as possible. 
+
+<hr/> 
+
+#### Important
+Unlike in the `Basic` repository there is no order to these algos. If you are stuck, do not waste days on it. Ask questions in slack for insight or help but move on to a new challenge while awaiting responses. Perfecting algos will not get you paid but they are a necessary step. Let's rip through this so we can start building applications.  
