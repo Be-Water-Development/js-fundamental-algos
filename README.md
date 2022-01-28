@@ -3,7 +3,7 @@
 ## Instructions
 
 * Clone locally.
-* You have a decision as to how you want to do this. You can checkout a new branch, code on it and merge to the default branch <b>develop<b> as devs do on teams. Or you can commit right to develop which will give you faster git history on your git contribution chart. Up to you, either works.
+* You have a decision as to how you want to do this. You can checkout a new branch, code on it and merge to the default branch <b>develop</b> as devs do on teams. Or you can commit right to develop which will give you faster git history on your git contribution chart. Up to you, either works.
 
 <hr/>
 
