@@ -57,34 +57,4 @@ function once(func) {
   //CODE HERE
 }
 
-// Reduces collection to a value which is the accumulated result of running each element in collection through iteratee, where each successive invocation is supplied the return value of the previous. If accumulator is not provided the first element of collection is used as the initial value.
-// If a start parameter is not provided, then set the start value as the zeroth index
-// reduce([1,2], function(stored,current) {
-//  return stored + current;
-// }); → 3
-// reduce([1,2], function(stored,current) {
-//  return stored + current;
-// },1); → 4
-function reduce(array, callback, start) {}
 
-// Takes an array and a function as arguments.
-// Returns true if the function produces true when each array element is passed to it.
-// Otherwise it returns false.
-// every([2, 4, 6], function(elem) {
-//   return elem % 2 == 0;
-// });  -> true
-// every([2, 4, 7], function(elem) {
-//   return elem % 2 == 0;
-// });  -> false
-// BONUS: use reduce in your answer
-function every(array, func) {
-  //CODE HERE
-}
-
-// Flattens a nested array.
-// flatten([1, [2, 3, [4]]]); → [1, 2, 3, [4]]
-function flatten(array) {}
-
-// Recursively flattens a nested array.
-// flattenDeep([1, [2, 3, [4]]]); → [1, 2, 3, 4]
-function flattenDeep(array) {}
